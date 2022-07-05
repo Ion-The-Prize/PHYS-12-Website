@@ -1,16 +1,14 @@
 +++
 fragment = "content"
-#disabled = true
+#disabled = false
 date = "2017-10-05"
 weight = 100
 #background = ""
 
-title = "About Syna"
+title = "About Me"
 #subtitle = ""
 +++
 
-<<<<<<< Updated upstream
-=======
 Greetings! My name is Aubrey Bee-Lindgren and I am currently a rising senior at Decatur High School and from Atlanta Georgia. I am also "dual" enrolled at Oglethorpe University and Georgia Piedmont Technical College (fingers crossed for Georgia Tech). I've been making things and doing mechanical engineering all my life, but have never taken a proper class on the subject so am very excited to be here.
 
 I'll be CAD lead on my school's FIRST Robotics Competition robotics team—Global Dynamics #4026—this coming season and hopefully team captain of our FIRST Tech Challenge team. I work as a private math and chemistry tutor and volunteer at my local makerspace, where I am in charge of the 3D printers.
@@ -21,9 +19,7 @@ As far as sports go, I do taekwondo, cross country, and policy debate (if that l
 
 
 
-
->>>>>>> Stashed changes
-Open Source Theme from Okkur for your next project.
+HUGE "Thank you" to Okkur and their Syna theme for Hugo
 
 Syna is based on the awesome work by digitalcraftsman with his Hugo Agency Theme.
 
