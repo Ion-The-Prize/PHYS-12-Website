@@ -19,7 +19,7 @@ subtitle = "Showcase your next project"
 
 [[buttons]]
   text = "Portfolio"
-  url = "/portfolio/"
+  url = "/portfolio/index.html"
   color = "info" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
