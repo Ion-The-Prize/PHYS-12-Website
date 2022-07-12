@@ -6,15 +6,15 @@ weight = 50
 background = "dark" # can influence the text color
 particles = true
 
-title = "Syna Theme"
-subtitle = "Showcase your next project"
+title = "Aubrey Bee-Lindgren"
+subtitle = "PHYS-12"
 
 [header]
   image = "header-Sunset.jpeg"
 
 [asset]
-  image = "logo.svg"
-  width = "500px" # optional - will default to image width
+  image = "logo-homepage.svg"
+  width = "225px" # optional - will default to image width
   #height = "150px" # optional - will default to image height
 
 [[buttons]]

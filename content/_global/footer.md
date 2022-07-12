@@ -1,7 +1,7 @@
 +++
 fragment = "footer"
 #disabled = true
-date = "2016-09-07"
+date = "2022-07-11"
 weight = 1200
 #background = ""
 
@@ -10,6 +10,7 @@ menu_title = "Link Title"
 [asset]
   title = "Logo Title"
   image = "logo.svg"
+  width = "200px"
   text = "Logo Subtext"
   url = "#"
 +++
