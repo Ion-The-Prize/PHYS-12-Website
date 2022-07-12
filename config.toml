@@ -1,7 +1,7 @@
 # Site settings
 baseurl = "/"
 languageCode = "en-us"
-title = "Okkur - Syna"
+title = "Ion The Prize - PHYS-12"
 theme = "syna"
 enableGitInfo = true
 version = "0.17.3"
@@ -27,8 +27,8 @@ lastmod = ["lastmod", ":git", "date"]
     getenv = ['^HUGO_', 'DEMO_MODE']
 
 [params]
-  name = "Okkur Labs"
-  description = "Open Source Theme for your next project"
+  name = "Ion The Prize"
+  description = "Aubrey Bee-Lindren's Portfolio for PHYS-12"
 
   [params.style]
     #background = "secondary"
@@ -56,13 +56,13 @@ lastmod = ["lastmod", ":git", "date"]
     pro = false
 
   [params.colors]
-    primary = "#00838F"
+    primary = "#b30045"
     secondary = "#868e96"
-    success = "#008f54"
-    info = "#00c9dc"
+    success = "#00b36e"
+    info = "#e60078"
     warning = "#fdf314"
-    danger = "#dc1200"
-    light = "#f8f9fa"
+    danger = "#b60000"
+    light = "#f0f0f0"
     dark = "#343a40"
 
 # main/prepend/postpend menus are displayed in nav fragment.
@@ -75,7 +75,7 @@ lastmod = ["lastmod", ":git", "date"]
 
 [[menu.main]]
   url = "/about"
-  name = "About Us"
+  name = "About"
   weight = 20
 
 [[menu.main]]
@@ -100,13 +100,8 @@ lastmod = ["lastmod", ":git", "date"]
 
 [[menu.copyright_footer]]
   url = "/about"
-  name = "About Us"
+  name = "About Me"
   weight = 10
-
-[[menu.copyright_footer]]
-  url = "#"
-  name = "Another Link"
-  weight = 30
 
 [[menu.footer_social]]
   weight = 20
