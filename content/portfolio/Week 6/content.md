@@ -55,4 +55,6 @@ And the code:
 <img src="Potentiometer-Code.png" alt="" width=/>
 </p>
 
-The input appears a little jagged, but, once the graph rescales properly, it looks very smooth. And... it works! Here's a video:
+The potentiometer ranges from 0-1023, but the motor only utilizes values from 0-255. So, for the most precision, the input being fed into the motor is divided by 4.
+
+Also, while the input appears a little jagged, once the graph rescales properly it looks very smooth. And... it works! Here's a video:
