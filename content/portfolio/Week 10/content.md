@@ -56,8 +56,6 @@ void loop() {
 }
 ```
 
-{put a video here}
-
 I wanted to experiment with microsteps, so I wired up the standby pin and changed `MODE1` to HIGH and added a bit of code in `setup` to tell the stepper to use half steps:
 
 <p align="center">
