@@ -1,4 +1,4 @@
 +++
-title = "About Syna"
-date = "2017-10-05"
+title = "About Me"
+date = "2022-14-12"
 +++

@@ -1,0 +1,21 @@
+/* Until the config fragment can be figured out, these styling changes are pasted into the Syna theme _syna.scss file */
+
+/* Making content fragment wider */
+container py-5 overlay .container-xl, .container-lg, .container-md, .container-sm, .container {
+  max-width: 1400px;
+}
+
+blockquote {
+	padding: 0 1em;
+	font-size: 1rem !important;
+	color:grey;
+	border-left: .25em solid grey;
+}
+
+#leftTitle, #lightTitle {
+	text-align: left;
+}
+
+#lightTitle {
+	font-weight: 350;
+}

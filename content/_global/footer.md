@@ -15,8 +15,6 @@ menu_title = "Link Title"
   url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 +++
 
-#### Description Title
+#### Notice
 
-Project description such as:
-Open source theme for your next project
-Provided by Okkur Labs
+All photographs, background images, graphics, and designs were created by Aubrey Bee-Lindgren unless stated otherwise.

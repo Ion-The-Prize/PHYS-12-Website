@@ -1,7 +1,7 @@
 # Site settings
 baseurl = "/"
 languageCode = "en-us"
-title = "Ion The Prize - PHYS-12"
+title = "Ion The Prize"
 theme = "syna"
 enableGitInfo = true
 version = "0.17.3"
@@ -22,13 +22,17 @@ lastmod = ["lastmod", ":git", "date"]
   [markup.goldmark]
     [markup.goldmark.renderer]
      unsafe = true
+  [markup.tableOfContents]
+    endLevel = 6
+    ordered = false
+    startLevel = 2
 
  [security.funcs]
     getenv = ['^HUGO_', 'DEMO_MODE']
 
 [params]
   name = "Ion The Prize"
-  description = "Aubrey Bee-Lindren's Portfolio for PHYS-12"
+  description = "Maker & CAD Portfolio"
 
   [params.style]
     #background = "secondary"
@@ -55,15 +59,19 @@ lastmod = ["lastmod", ":git", "date"]
     disabled = false
     pro = false
 
-  [params.colors]
-    primary = "#b30045"
-    secondary = "#868e96"
-    success = "#00b36e"
-    info = "#e60078"
-    warning = "#fdf314"
-    danger = "#b60000"
-    light = "#f0f0f0"
-    dark = "#343a40"
+  [params.colors] # https://coolors.co/ae1e4a-c8cbd0-00c37e-f5007e-fddc35-b11111-f0f0f0-343a40
+    primary = "#ae1e4a"     # amaranth purple (#6e1b8c "eminence" (royal purple))
+    secondary = "#c8cbd0"   # silver sand (#f2cff2 "pink lace" or #cc88cc "african violet")
+    success = "#00c37e"     # emerald
+    info = "#f5007e"        # flickr pink (#00cce7 "sky blue crayola" (light cyan))
+    warning = "#fddc35"     # szzling sunrise
+    danger = "#b11111"      # carnelian
+    light = "#f0f0f0"       # cultured
+    dark = "#343a40"        # onyx (alternate: #2182b "Oxford blue")
+    cad = "#71b2c9"         # (custom color) maximum blue
+
+[minify]
+disableJs = true
 
 # main/prepend/postpend menus are displayed in nav fragment.
 # Keep an eye out for updates. These will be moved out to make navbar more

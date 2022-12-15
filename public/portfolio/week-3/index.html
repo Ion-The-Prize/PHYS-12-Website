@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  
+
+<head>
+  <meta name="theme" content="Syna">
+  <meta name="theme-version" content="v0.17.4">
+  <meta name="theme-url" content="https://syna.okkur.org">
+  <meta name="theme-description" content="Highly customizable open source theme for Hugo based static websites">
+  <meta name="theme-author" content="Okkur Labs">
+  <meta name="theme-author-url" content="https://about.okkur.org">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google" content="notranslate" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="description" content="Kinetic Sculpture Outline Because the lab makerspace does not currently have a UV curing station for the Formlabs SLA 3D printer, therefore rendering it unable to be used, I wanted to help out by making one.
+The basic requirements for a curing setup are actually pretty simple:
+Must have relatively even, total coverage of UV light &hellip;and that&rsquo;s really it. To accomplish the requirements of &ldquo;relatively even&rdquo; UV light with &ldquo;total coverage&rdquo; of the parts as cheaply and effectively as possible, the basic idea is this: a cardboard box with UV LED strips, a turntable, and a lot of mylar.">
+  <meta property="og:title" content="Week 3 - Electronics and Tools" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/portfolio/week-3/" /><meta property="article:section" content="portfolio" />
+<meta property="article:published_time" content="2022-06-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-07T02:39:08-04:00" />
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Week 3 - Electronics and Tools &amp;middot; Ion The Prize - PHYS-12" />
+  <meta name="twitter:description" content="Kinetic Sculpture Outline Because the lab makerspace does not currently have a UV curing station for the Formlabs SLA 3D printer, therefore rendering it unable to be used, I wanted to help out by making one.
+The basic requirements for a curing setup are actually pretty simple:
+Must have relatively even, total coverage of UV light &hellip;and that&rsquo;s really it. To accomplish the requirements of &ldquo;relatively even&rdquo; UV light with &ldquo;total coverage&rdquo; of the parts as cheaply and effectively as possible, the basic idea is this: a cardboard box with UV LED strips, a turntable, and a lot of mylar.">
+  <meta name="twitter:url" content="/portfolio/week-3/" />
+        <meta property="og:image" content="">
+        <meta name="twitter:image" content="">
+  <meta name="author" content="Ion The Prize">
+
+  <meta name="generator" content="Hugo 0.101.0" />
+
+  <title>Week 3 - Electronics and Tools &middot; Ion The Prize - PHYS-12</title>
+
+  <!-- Theme Styles -->
+  <style>
+.mx-0 {
+  margin-left: 0 !important;
+  margin-right: 0 !important; }
+
+ 
+@-ms-viewport {
+  width: device-width; }
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 540px;
+  max-width: 720px;
+  max-width: 960px;
+  max-width: 1140px; }
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px; }
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0; }
+  .no-gutters > .col,
+  .no-gutters > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0; }
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
+.col-auto {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px; }
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%; }
+
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: none; }
+
+.col-1 {
+  flex: 0 0 8.33333%;
+  max-width: 8.33333%; }
+
+.col-2 {
+  flex: 0 0 16.66667%;
+  max-width: 16.66667%; }
+
+.col-3 {
+  flex: 0 0 25%;
+  max-width: 25%; }
+
+.col-4 {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%; }
+
+.col-5 {
+  flex: 0 0 41.66667%;
+  max-width: 41.66667%; }
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%; }
+
+.col-7 {
+  flex: 0 0 58.33333%;
+  max-width: 58.33333%; }
+
+.col-8 {
+  flex: 0 0 66.66667%;
+  max-width: 66.66667%; }
+
+.col-9 {
+  flex: 0 0 75%;
+  max-width: 75%; }
+
+.col-10 {
+  flex: 0 0 83.33333%;
+  max-width: 83.33333%; }
+
+.col-11 {
+  flex: 0 0 91.66667%;
+  max-width: 91.66667%; }
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%; }
+
+.order-first {
+  order: -1; }
+
+.order-last {
+  order: 13; }
+
+.order-0 {
+  order: 0; }
+
+.order-1 {
+  order: 1; }
+
+.order-2 {
+  order: 2; }
+
+.order-3 {
+  order: 3; }
+
+.order-4 {
+  order: 4; }
+
+.order-5 {
+  order: 5; }
+
+.order-6 {
+  order: 6; }
+
+.order-7 {
+  order: 7; }
+
+.order-8 {
+  order: 8; }
+
+.order-9 {
+  order: 9; }
+
+.order-10 {
+  order: 10; }
+
+.order-11 {
+  order: 11; }
+
+.order-12 {
+  order: 12; }
+
+.offset-1 {
+  margin-left: 8.33333%; }
+
+.offset-2 {
+  margin-left: 16.66667%; }
+
+.offset-3 {
+  margin-left: 25%; }
+
+.offset-4 {
+  margin-left: 33.33333%; }
+
+.offset-5 {
+  margin-left: 41.66667%; }
+
+.offset-6 {
+  margin-left: 50%; }
+
+.offset-7 {
+  margin-left: 58.33333%; }
+
+.offset-8 {
+  margin-left: 66.66667%; }
+
+.offset-9 {
+  margin-left: 75%; }
+
+.offset-10 {
+  margin-left: 83.33333%; }
+
+.offset-11 {
+  margin-left: 91.66667%; }
+
+.d-none {
+  display: none !important; }
+
+.d-inline {
+  display: inline !important; }
+
+.d-inline-block {
+  display: inline-block !important; }
+
+.d-block {
+  display: block !important; }
+
+.d-table {
+  display: table !important; }
+
+.d-table-row {
+  display: table-row !important; }
+
+.d-table-cell {
+  display: table-cell !important; }
+
+.d-flex {
+  display: flex !important; }
+
+.d-inline-flex {
+  display: inline-flex !important; }
+
+@media print {
+  .d-print-none {
+    display: none !important; }
+  .d-print-inline {
+    display: inline !important; }
+  .d-print-inline-block {
+    display: inline-block !important; }
+  .d-print-block {
+    display: block !important; }
+  .d-print-table {
+    display: table !important; }
+  .d-print-table-row {
+    display: table-row !important; }
+  .d-print-table-cell {
+    display: table-cell !important; }
+  .d-print-flex {
+    display: flex !important; }
+  .d-print-inline-flex {
+    display: inline-flex !important; } }
+
+.flex-row {
+  flex-direction: row !important; }
+
+.flex-column {
+  flex-direction: column !important; }
+
+.flex-row-reverse {
+  flex-direction: row-reverse !important; }
+
+.flex-column-reverse {
+  flex-direction: column-reverse !important; }
+
+.flex-wrap {
+  flex-wrap: wrap !important; }
+
+.flex-nowrap {
+  flex-wrap: nowrap !important; }
+
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse !important; }
+
+.flex-fill {
+  flex: 1 1 auto !important; }
+
+.flex-grow-0 {
+  flex-grow: 0 !important; }
+
+.flex-grow-1 {
+  flex-grow: 1 !important; }
+
+.flex-shrink-0 {
+  flex-shrink: 0 !important; }
+
+.flex-shrink-1 {
+  flex-shrink: 1 !important; }
+
+.justify-content-start {
+  justify-content: flex-start !important; }
+
+.justify-content-end {
+  justify-content: flex-end !important; }
+
+.justify-content-center {
+  justify-content: center !important; }
+
+.justify-content-between {
+  justify-content: space-between !important; }
+
+.justify-content-around {
+  justify-content: space-around !important; }
+
+.align-items-start {
+  align-items: flex-start !important; }
+
+.align-items-end {
+  align-items: flex-end !important; }
+
+.align-items-center {
+  align-items: center !important; }
+
+.align-items-baseline {
+  align-items: baseline !important; }
+
+.align-items-stretch {
+  align-items: stretch !important; }
+
+.align-content-start {
+  align-content: flex-start !important; }
+
+.align-content-end {
+  align-content: flex-end !important; }
+
+.align-content-center {
+  align-content: center !important; }
+
+.align-content-between {
+  align-content: space-between !important; }
+
+.align-content-around {
+  align-content: space-around !important; }
+
+.align-content-stretch {
+  align-content: stretch !important; }
+
+.align-self-auto {
+  align-self: auto !important; }
+
+.align-self-start {
+  align-self: flex-start !important; }
+
+.align-self-end {
+  align-self: flex-end !important; }
+
+.align-self-center {
+  align-self: center !important; }
+
+.align-self-baseline {
+  align-self: baseline !important; }
+
+.align-self-stretch {
+  align-self: stretch !important; }
+</style>
+
+      <link href="/style.min.db918c0e2126f0ddced7934c076855dba53c5adc6342e12321b1e04adf78b049.css" rel="stylesheet">
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link rel="icon" sizes="16x16 32x32" type="image/x-icon" href="/favicon.ico">
+      <link rel="icon" href="/favicon.png">
+      <link rel="apple-touch-icon-precomposed" href="/favicon.png">
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script>
+    window.syna = {
+      
+    };
+  </script>
+  <script src="/scripts/syna-head.min.947341ad24dd3253dfbe2ce8aeedfa838860075c3fe729f15b49c09e42c71a64.js"></script></head>
+<body class="bg-secondary">
+    <!-- Navigation --><nav class="overlay fragment navbar navbar-expand-lg py-2 scroll-spy bg-light navbar-light" id="nav" role="navigation">
+  <div class="container">
+      <a class="navbar-brand py-0" href="/#">
+        <img src="/images/logo.svg" height="35" class="d-inline-block align-top" alt="PHYS-12">
+      </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse justify-content-end collapse show" id="navbarCollapse">
+      <ul class="navbar-nav"><li class="nav-item ">
+              <a
+                  class="nav-link"
+                
+                  href="/"
+                >
+                Home
+              </a>
+              
+            </li><li class="nav-item ">
+              <a
+                  class="nav-link"
+                
+                  href="/about"
+                >
+                About
+              </a>
+              
+            </li><li class="nav-item ">
+              <a
+                  class="nav-link anchor"
+                
+                  href="/#contact"
+                >
+                Contact
+              </a>
+              
+            </li>
+      </ul>
+    </div>
+  </div>
+    <div class="d-none d-lg-block pl-auto">
+      <a class="btn btn-light ignore-color-change" href="https://github.com/okkur/syna" role="button" title="Github">
+        <i class="fab fa-github mr-2"></i>
+        GitHub
+      </a>
+    </div>
+</nav>
+
+<div class="scroll-to-top bg-primary has-font-icon"
+  title="Back to top"
+  ><i class="fas fa-angle-up"></i><span class="sr-only">Back to top</span>
+</div>
+<!-- Content -->
+<section id="content" class="fragment content-fragment">
+    <div class="container-fluid bg-light overlay">
+    <div class="container py-5 overlay">
+<div class="row">
+      <article class="col-md-12">
+<div class="content-body col-12 content px-0 text-body"><h1 id="kinetic-sculpture">Kinetic Sculpture</h1>
+<h2 id="outline">Outline</h2>
+<p>Because the lab makerspace does not currently have a UV curing station for the Formlabs SLA 3D printer, therefore rendering it unable to be used, I wanted to help out by making one.</p>
+<p>The basic requirements for a curing setup are actually pretty simple:</p>
+<ul>
+<li>Must have relatively even, total coverage of UV light</li>
+</ul>
+<p>&hellip;and that&rsquo;s really it. To accomplish the requirements of &ldquo;relatively even&rdquo; UV light with &ldquo;total coverage&rdquo; of the parts as cheaply and effectively as possible, the basic idea is this: a cardboard box with UV LED strips, a turntable, and a lot of mylar. Here is a precise sketch:</p>
+<p>The motor does not need to be powerful at all, in fact, it&rsquo;s probably better for energy and part stability for it to be slow. The yellow motors will suffice for this project. Soldering up wires and adding a dab of hot glue gives us:</p>
+<p>The motor having an output shaft that comes out both sides is problematic for us, as we want it to lie flat. So, we will cut off the part on the wire&rsquo;s side with a hacksaw.</p>
+<p>I don&rsquo;t like the idea of gluing the motor to something (especially since that would likely involve sanding to roughen up the smooth, injection-molded plastic surface just to get glue to stick), so we will use bolts in the two holes to affix the motor to the laser-cut housing.</p>
+<p>This gives us information of what details we should include in our CAD of the motor (and gearbox); these details being the general shape (we don&rsquo;t need to be specific with the geometry because it won&rsquo;t be press-fit into the housing), sizes, the output shaft location, and information about the mounting holes we&rsquo;ll use.</p>
+<h2 id="motor-cad">Motor CAD</h2>
+<h6 id="cool-caliper--cad-hacks">Cool Caliper &amp; CAD Hacks</h6>
+<p>For all these <em>measured</em> dimensions and not ones that are for custom user values, we can just name our <code>model parameters</code> appropriately instead of making a bunch of <code>user parameters</code>.</p>
+<p>If the part you&rsquo;re measuring was made by a person, it probably has standard, whole number, or common fractional measurements. If you can check it against something (like an M3 bolt), feel free to round if your calipers measure something close but not quite. Make a comment of it along with the actual, measured value in the parameter, though.</p>
+<p>After taking a measurement, you may be able to figure out if your calipers drifted a bit by closing them and seeing if they still say zero.</p>
+<p>The motor is smaller than the gearbox on all sides, so measuring its length conventionally would be difficult. So, we can measure the gearbox length, zero the calipers, and then extend them to measure the entire motor + gearbox assembly length, only with the gearbox length already subtracted.</p>
+<p>Positioning the mounting holes is annoying—you would have to measure the edge-of-circle-to-wall distance because of the nature of calipers, and then constrain the center of the circle to the wall and add the radius and it&rsquo;s just a mess. Instead, you can create a <code>construction</code> <code>centerline</code> constrained to the midpoint of the body:</p>
+<p>Then, place the circle somewhere where it does not snap to anything:</p>
+<p>And now, constrain the circle&rsquo;s horizontal distance to the centerline using the center-to-center measurement of the circles (the dimensional constraint will look different, that&rsquo;s because it&rsquo;s controlling the center-to-center distance to where a reflection about of the centerline would be):</p>
+<p>This is also very handy because we can now <code>pattern reflect</code> this hole about the centerline.</p>
+<p>However, measuring the center-to-center distance of holes is often challenging. To get the measurement easily, simply measure the diameter of a hole, zero the calipers, and then measure the outer edge-to-edge distance—it&rsquo;ll already effectively have the radii subtracted twice, giving you the center-to-center distance. Note that this trick only works if the holes are the same size.</p>
+<h6 id="cool-caliper--cad-hacks-over-and-out">Cool Caliper &amp; CAD Hacks Over and Out</h6>
+<p>We can just get the center-to-edge distances for other constraints the boring way by measuring the edge-to-edge and then adding half the diameter.</p>
+<p>Extrude by the measured height and we have a fancy box with holes in it (even if we weren&rsquo;t planning on putting a spinnable peg there in the assembly, it wouldn&rsquo;t really matter that the output shaft is a hole and not a peg; what&rsquo;s really important is the size and position):</p>
+<p>Also, the actual gearbox has some fillets, so we can use our calipers to approximate the fillet radius.</p>
+<p>Again, the precise shape of the motor itself is not very important; just that it has pretty accurate dimensions. Because of this, we can approximate it as an ellipse and use the snip tool to cut off the top and bottom:</p>
+<p>Extruding:</p>
+<p>And now we have our motor all CAD-ed up!</p>
+<h2 id="tabbed-box-cad">Tabbed Box CAD</h2>
+<p>Personally, I don&rsquo;t like designing laser-cut parts in 3D CAD software, especially the tabs. So, I will be using an online tool I&rsquo;ve used before to make tabbed boxes; <a href="https://www.festi.info/boxes.py/?language=en">boxes.py</a>.</p>
+<p>I like the <a href="https://www.festi.info/boxes.py/ElectronicsBox?language=en">electronics box</a> design. It has mounting holes which will be useful so the motor spins the turntable instead of itself, and the removable lid is a nice touch.</p>
+<p>The option to save settings into a url makes sharing easy, so I&rsquo;ll include urls for every iteration.</p>
+<p>The first thing I did was uncheck the <code>outside</code> setting and then export a .svg into Adobe Illsutrator with all the other settings as their defaults. I then measured the distance from the base of the walls to the holes for the triangles&rsquo; tabs, which revealed that the <code>height</code> parameter is not for the height of the overall box, but instead the height for the contents (which is good because it&rsquo;s what we would want to control anyway, so it just means less work).</p>
+<p>Instead of filling in the parameters on boxes.py with the parameters from Inventor verbatim, I added a bit of wiggle room on the height and length, and a generous amount of space on either side of the motor. This accomplishes three main things:</p>
+<ol>
+<li>Provides the turntable with a bit more</li>
+<li>Makes the motor is easier to put in the box</li>
+<li>Provides space for cable ties if they become necessary.</li>
+</ol>
+<p>I&rsquo;d like to be note that I&rsquo;m keeping the format as a .svg so I can preview it in my browser and make changes easier; to actually get it laser cut of course needs a .dxf, so I&rsquo;ll just change it to that once it looks good.</p>
+<p>This leaves us with <a href="https://www.festi.info/boxes.py/ElectronicsBox?FingerJoint_angle=90.0&amp;FingerJoint_style=rectangular&amp;FingerJoint_surroundingspaces=2.0&amp;FingerJoint_edge_width=1.0&amp;FingerJoint_extra_length=0.0&amp;FingerJoint_finger=2.0&amp;FingerJoint_play=0.0&amp;FingerJoint_space=2.0&amp;FingerJoint_width=1.0&amp;x=53.00&amp;y=70.00&amp;h=20.0&amp;outside=0&amp;triangle=18.0&amp;d1=3.0&amp;d2=3.0&amp;d3=3.0&amp;outsidemounts=0&amp;outsidemounts=1&amp;holedist=7.0&amp;thickness=4.6&amp;format=svg&amp;tabs=0.0&amp;debug=0&amp;labels=0&amp;labels=1&amp;reference=100&amp;inner_corners=loop&amp;burn=0.1&amp;render=0">this</a>:</p>
+<p>This looks good, except for the fact that there are no tabs on the triangles. Reading through the settings reveals the culprit(s): <code>surroundingspaces</code> and <code>finger</code>. Basically, the tabs were too large and demanded too much space around the edges. Lowering these gives us <a href="https://www.festi.info/boxes.py/ElectronicsBox?FingerJoint_angle=90.0&amp;FingerJoint_style=rectangular&amp;FingerJoint_surroundingspaces=1.0&amp;FingerJoint_edge_width=1.0&amp;FingerJoint_extra_length=0.0&amp;FingerJoint_finger=1.5&amp;FingerJoint_play=0.0&amp;FingerJoint_space=2.0&amp;FingerJoint_width=1.0&amp;x=58.00&amp;y=75.00&amp;h=15.5&amp;outside=0&amp;triangle=18.0&amp;d1=3.0&amp;d2=3.0&amp;d3=3.0&amp;outsidemounts=0&amp;outsidemounts=1&amp;holedist=7.0&amp;thickness=4.6&amp;format=svg&amp;tabs=0.0&amp;debug=0&amp;labels=0&amp;labels=1&amp;reference=100&amp;inner_corners=loop&amp;burn=0.3&amp;render=0">something good</a>:</p>
+<p>Let&rsquo;s get it laser-cut:</p>
+<p>Aaannnd it didn&rsquo;t cut all the way through.</p>
+<p>And the lab was closing so this is what we have. After mauling it with an x-acto knife, the only casualty was Wall 3, which lost half its skin due to impatience. Other than that, it seems pretty good.</p>
+<p>While I was at it, I also punched some holes in the bottom and top for bolts and the shaft. The wires can also fit pretty perfectly in between the tabs. Wall 3 losing its skin did enable an easier punching through with the tab on the gearbox, which adds another point of stability. That said, punching all these by hand is not ideal—they should be included in the design. The main issue is that the shaft might not poke through enough, but this can&rsquo;t really be fixed with the design of the box given how perfect the height is, so hopefully a bolt in the shaft will be able to fix it. Lastly, the length is a too long.</p>
+<p>For the next iteration, I remade <a href="https://www.festi.info/boxes.py/ElectronicsBox?FingerJoint_angle=90.0&amp;FingerJoint_style=rectangular&amp;FingerJoint_surroundingspaces=1.0&amp;FingerJoint_edge_width=1.0&amp;FingerJoint_extra_length=0.0&amp;FingerJoint_finger=1.5&amp;FingerJoint_play=0.0&amp;FingerJoint_space=2.0&amp;FingerJoint_width=1.0&amp;x=58.00&amp;y=66.00&amp;h=15.5&amp;outside=0&amp;triangle=18.0&amp;d1=3.0&amp;d2=3.0&amp;d3=3.0&amp;outsidemounts=0&amp;outsidemounts=1&amp;holedist=7.0&amp;thickness=4.5&amp;format=svg&amp;tabs=0.0&amp;debug=0&amp;labels=0&amp;labels=1&amp;reference=100&amp;inner_corners=loop&amp;burn=0.3&amp;render=0">some alterations to the box with boxes.py</a> and then used Illustrator to add the mounting holes I punched through in the first:</p>
+</div>
+    </article>
+  </div>
+    </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<section id="footer" class="fragment ">
+    <div class="container-fluid bg-light ">
+    <div class="container py-5 ">
+
+  <div class="row">
+    <div class="col-md m-2 text-body">
+        <h4></h4>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+          <img src="/images/logo.svg" class="img-fluid w-50" alt="Click the logo on the header to go to the homepage. Click this one to get rickrolled.">
+        </a>
+        <div class="row justify-content-left ml-0">
+            <span class="fa-stack fa-2x mt-3 mr-1" title="facebook">
+              <a href="/#" class="ignore-color-change">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-facebook-f fa-stack-1x fa-fw text-light"></i>
+                <span class="sr-only">facebook</span>
+              </a>
+            </span>
+            <span class="fa-stack fa-2x mt-3 mr-1" title="linkedin">
+              <a href="/#" class="ignore-color-change">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-linkedin-in fa-stack-1x fa-fw text-light"></i>
+                <span class="sr-only">linkedin</span>
+              </a>
+            </span>
+        </div>
+    </div>
+    <div class="col-md m-2 text-body">
+        <h4>Link Title</h4>
+        <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link p-0 display-5" href="/#"
+                    class="anchor">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link p-0 display-5" href="/#"
+                    class="anchor">Long Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link p-0 display-5" href="/#"
+                    class="anchor">Tiny Link</a>
+              </li>
+        </ul>
+    </div>
+    <div class="col-md m-2 text-body">
+        <div><h4 id="description-title">Description Title</h4>
+<p>Project description such as:
+Open source theme for your next project
+Provided by Okkur Labs</p>
+</div>
+    </div>
+  </div>
+    </div>
+    </div>
+</section>
+
+
+<!-- Copyright -->
+<footer class="overlay fragment container-fluid bg-light" id="copyright">
+  <div class="container">
+    <div class="row py-3">
+      <div class="col-md">
+        <div class="row mx-0 my-2 justify-content-center text-center text-lg-none text-black-50">
+          <div class="row mx-0 mr-lg-auto justify-content-center">
+              <div class="col-auto px-1 copyright-legal">© Copyright&nbsp;2022</div>
+              <div class="col-auto px-0 copyright-by"> by  Ion The Prize</div>
+          </div>
+        </div>
+      </div>
+        <div class="col-auto mx-auto">
+          <div class="row mx-0 navbar-text text-center text-black-50">Website based on<a href="https://syna.okkur.org" class="ml-1">Syna</a>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="row mx-0 my-2 justify-content-center">
+            <ul class="nav ml-lg-auto">
+                <li class="nav-item">
+                  <a class="nav-link py-0" href="/about"
+                  >About Me</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </div>
+</footer>
+<div id="react"></div>
+
+    <!-- Theme Code -->
+      <script async defer src="/scripts/syna-main.min.1a3a81d584c3d2f114f3575196cd38adec80434bd26ffac023d494745d306358.js"></script>
+      <script async defer src="/scripts/syna-content.min.b0072d521bf38e98e2da1d20333cc046a07539294375bff38d5372885de52181.js"></script>
+  </body>
+</html>

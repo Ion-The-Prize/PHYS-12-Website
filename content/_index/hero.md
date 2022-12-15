@@ -7,7 +7,7 @@ background = "dark" # can influence the text color
 particles = true
 
 title = "Aubrey Bee-Lindgren"
-subtitle = "PHYS-12"
+subtitle = "Personal Website"
 
 [header]
   image = "header-Sunset.jpeg"
@@ -18,17 +18,17 @@ subtitle = "PHYS-12"
   #height = "150px" # optional - will default to image height
 
 [[buttons]]
-  text = "Portfolio"
-  url = "/portfolio/index.html"
-  color = "info" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
+  text = "About"
+  url = "/about/"
+  color = "primary"
 
 [[buttons]]
-  text = "Syna Theme"
-  url = "https://github.com/okkur/syna/releases"
-  color = "primary"
+  text = "Maker Portfolio"
+  url = "/maker-portfolio/index.html"
+  color = "info" # primary, secondary, success, info, warning, danger, light, dark, link - default: primary
 
 [[buttons]]
   text = "Rickroll"
   url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-  color = "info"
+  color = "primary"
 +++
