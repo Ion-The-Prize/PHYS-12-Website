@@ -1,0 +1,6 @@
+<span class="inline-svg" >
+    {{- $fname:=print "static/fontawesome/" ( .Get 0 ) ".svg" -}}
+    {{- $path:="<path" -}}
+    {{- $fill:="<path fill=\"#ae1e4a\"" -}}
+    {{ replace (readFile $fname) $path $fill | safeHTML }}
+</span>

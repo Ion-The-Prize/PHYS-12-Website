@@ -7,35 +7,41 @@ weight = 100
 #headless = true
 
 #background = ""
-categories = ["Long"]
+categories = ["Axial Flux Motor", "Speed Controller"]
 display_date = true
 date = "2022-10-31" # yyyy-mm-dd
+publishdate = "2022-10-31"
 
-title-align = "left"
-title = """<h1 id="leftTitle" style="text-align:left !important;">A DIY 3-Phase PM BLDC Axial Flux Electric Motor and Custom, Sensor-Based ESC</h1>"""
-subtitle = """<h2 id="lightTitle"><font size="5" color="grey" font-weight="100"><i>What goes into making a speed controller for a BLDC electric motor?</i></font></h2>"""
+title_align = "left"
+title = """A DIY 3-Phase PM BLDC Axial Flux Electric Motor and Custom, Sensor-Based ESC"""
+subtitle = """
+<h2 id="lightTitle"><font size="5" color="grey" font-weight="100"><i>
+	What goes into making a speed controller for a BLDC electric motor?
+</i></font></h2>
+"""
 
 summary = """ """
 
 [sidebar]
-	title = "Contents"
-	sticky = true
-	align = "right"
-	#content = ""
+    title = "Contents"
+    sticky = true
+    align = "right"
+    #content = ""
 
 #[asset]
-	image = ""
+	image = "Omitted because Syna devs don't want this to work (GH issue 629)"
 +++
 
-*n minute read*
-
+{{< fontawesome "calendar-days-regular" >}} {{< readableDate >}} </br>
+{{< fontawesome "clock-regular" >}} {{< estReadingTime >}}
 
 -------
 
-
 ## Introduction
 
+
 ### Background
+
 
 #### Motivation: Why did I choose this project?
 
@@ -45,26 +51,15 @@ The first is that I commuted between schools a lot on my bike and thought this w
 
 As I was making the scooter, I was using some parts I didn’t make and didn’t completely understand (many of them electronics-based). I asked myself if I could really say that I had made the scooter from scratch if this were the case. I decided not and so, earlier this year, I made a DC electric radial flux motor from scratch using mostly 3D-printed parts. Why radial flux and brushless? Because I heard it was harder than a brushed motor.
 
-Anyway, the motor hit almost 2000 RPM without breaking a sweat; it didn’t even get warm! And this was without an iron core! So I was happy, right? Wrong. To make it spin, I used a pre-made so-called “speed controller.” Because I simply can’t have that, I wanted to make a speed controller. But, because of the design of the motor I made, doing so with that motor would have been a lot more complicated than I was comfortable with (too big of a step up from my current skill level).
+Anyway, the motor hit almost 2000 RPM without breaking a sweat; it didn’t even get warm! And this was without an iron core! So I was happy, right? Wrong. To make it spin, I used a pre-made so-called " speed controller."  Because I simply can’t have that, I wanted to make a speed controller. But, because of the design of the motor I made, doing so with that motor would have been a lot more complicated than I was comfortable with (too big of a step up from my current skill level).
 
-Of course, I do have to draw the line of “from scratch” somewhere and move on. Making my own speed controller? Seems productive. Making my own transistors? Seems debatably productive. Enameling my own wire? Perhaps not very productive.
+Of course, I do have to draw the line of " from scratch"  somewhere and move on. Making my own speed controller? Seems productive. Making my own transistors? Seems debatably productive. Enameling my own wire? Perhaps not very productive.
 
 So that brings us to today, where I designed a new motor just so that I can make a speed controller for it so that I can be one step closer to making an electric scooter completely from scratch.
 
 *If you’re wondering why I decided to make a different style of motor (axial flux) instead of modifying the radial flux design, there are two main reasons: (1) axial flux is better for vehicles, and (2) it would be more challenging and therefore I would learn more.*
 
-#### How do electric motors work?
-
-Include a .gif of the drone motor guy’s video for the three phases
-Goal of motor is to translate electrical energy into (rotational) kinetic energy
-Moving electromagnetic field like a kind of Sisyphean light chase 
-If the field is aligned with the permanent magnets, then the motor will not move, so we need:
-3 phases so one will always be misaligned
-to be able to turn the electromagnets on and off precisely
-And we know where the permanent magnets are in relation to the electromagnets
-
-
-#### Project Outline & Goalsetting
+#### Project Outline & Goal-Setting
 
 ##### What are all those buzzwords in the title?
 
@@ -72,15 +67,14 @@ A DIY 3-Phase PM BLDC Axial Flux Electric Motor and Custom, Sensor-Based ESC
 DIY = do-it-yourself (homemade)
 3-Phase = a phase is a set of electromagnets being activated at the same time with the same polarity
 PM = permanent magnet based
-Axial flux - the style of motor (as opposed to radial flux). Axial flux means the magnetic fields of the electromagnets are perpendicular to the magnetic fields of the permanent magnets. Radial flux means they are parallel.  Axial Flux in wikipedia: "magnetic flux...is aligned parallel with the axis of rotation"
-Motor - spinny thing
+Axial flux - the style of motor (as opposed to radial flux). Axial flux means the magnetic fields of the magnetic fields of the permanent magnets are parallel to the axis of rotation and radial flux means the magnetic fields of the permanent magnets are perpendicular to the axis of rotation (" radiating"  outwards).
+Motor - thing that spins
 ESC - electronic speed controller - tells electromagnets when to turn on
 Sensor-based ESC - the ESC uses sensors (in this case Hall effect sensors) instead of induction from the permanent magnets to know where they are
 
-
 ##### Research Question
 
-The research question I seek to answer through this project is: “What goes into making a speed controller for a BLDC electric motor?”
+The research question I seek to answer through this project is: " What goes into making a speed controller for a BLDC electric motor?" 
 
 ##### Initial Project Goals & Overall Philosophy
 
@@ -97,7 +91,7 @@ That said, I do need to establish goals and criteria for success. These goals ar
 	- Is a minimum of a 4-8 minute read
 	- Is neatly structured (or, at least, organized)
 	- Contains a reflection section
-	- (Optionally contains) a short summary video up to around 1 minute in length
+	- (Optionally contains) a short preview/summary video up to around 1 minute in length
 - Create a presentation display for the motor
 
 ##### Kaplan Objectives
@@ -111,38 +105,61 @@ That said, I do need to establish goals and criteria for success. These goals ar
 
 
 
+#### How do electric motors work?
+
+Include a .gif of the drone motor guy’s video for the three phases
+
+The goal of an electric motor is to translate electrical potential energy into rotational kinetic energy. They accomplish this by forcing some magnets into a sort of Sisyphean light chase with electromagnets.
+
+Electromagnets use electricity to create a magnetic field. Permanent magnets, having their own magnetic fields, can be attracted and repelled by this. So, by turning on an electromagnet directly " in front"  of a permanent magnet, the permanent magnet will move towards the electromagnet to try to line up their fields. By arranging several electromagnets in a circle, the electromagnetics can be turned on and off in sequence to constantly change magnetic field, creating motion:
+
+Include 
+
+It turns out that we can link the electromagnets into three " phases"  with unique signals; we don’t need to individually control each electromagnet. Because the magnets are trying to align their fields, there will be no motion should they accomplish this. It turns out that three phases is the minimum amount of electromagnets needed to guarantee that there will always be one which is misaligned with the permanent magnets.
+
+The electromagnets and permanent magnets are each on one of the motor’s two main parts: the stator and the rotor. The difference is simple: the stator is the stationary and the rotor rotates. Usually electromagnets go on the stator in DC motors, as the wires would twist if they were on the rotor.
+
+There are two main flavors of DC motors: brushed and brushless. Brushed motors have incomplete circuits to the electromagnets which are completed when physical electrical contacts (" brushes" ) on the stator come into contact with other physical electrical contacts on the rotor, allowing current to flow through.  Brushless motors control the electromagnets externally with a speed controller composed of logic circuits and/or code.
+
+#### WITNtMMOWfSJtMaSP
+
+A.K.A., Why I Totally Need to Make My Own Motor from Scratch Just to Make a Speed Controller
+
+Basically, I want to make a speed controller (duh). To make a speed controller, I need a brushless motor. To turn the electromagnets on at the right time, I need to know where the magnets are. To know where the magnets are, I can either use scary magnetic field sensors or scary magnetic field sensors. The former is scary and the latter requisites my knowing precise information about the electromagnets and the permanent magnets’ relative positions. To know precise information about the motor, I pretty much just have to make it (especially given some other restrictions I have).
 ### Research
 
 #### Annotated Bibliography
-Each project must include a correctly formatted bibliography (without required annotations) with 3+ resources (Scholarly and/or peer-reviewed). Each must have a brief explanation of why I chose it. In addition, I must provide a brief remark on why I have the number of sources that I do (e.g. “I have 3 resources because there were very few resources on this specific area of my project”, or “I have 9 resources because this area of my project is controversial”). The style of citation I use should reflect my topic (science topics use APA, literature use MLA etc.)
+Each project must include a correctly formatted bibliography (without required annotations) with 3+ resources (Scholarly and/or peer-reviewed). Each must have a brief explanation of why I chose it. In addition, I must provide a brief remark on why I have the number of sources that I do (e.g. " I have 3 resources because there were very few resources on this specific area of my project" , or " I have 9 resources because this area of my project is controversial" ). The style of citation I use should reflect my topic (science topics use APA, literature use MLA etc.)
+
 
 J. F. Gieras, R.-J. Wang, and M. J. Kamper, *Axial Flux Permanent Magnet Brushless Machines*, 2nd ed. New York City, NY: Springer, 2008.
 > I selected this source because of its outstanding depth despite its also amazing breadth. Its incredibly thorough information is, at minimum, kind of useful for pretty much every aspect of this project as well as possible future, related ones and, at maximum, just what I need for many circumstances. This amazing wealth of information it provides is also rock solid with plenty of citations. The authors are also highly credible.
 
 [^Gieras]: J. F. Gieras, R.-J. Wang, and M. J. Kamper, *Axial Flux Permanent Magnet Brushless Machines*, 2nd ed. New York City, NY: Springer, 2008.
 
-Atmel, “Atmel AVR443: Sensor-based Control of Three Phase Brushless DC Motor,” 2596C−AVR−07/2013, Circa 2005 [Rev. July 2013]
+Atmel, " Atmel AVR443: Sensor-based Control of Three Phase Brushless DC Motor,"  2596C−AVR−07/2013, Circa 2005 [Rev. July 2013]
 > I chose this application note as a source because of its almost perfect relevance to my project—controlling a BLDC motor with Hall-effect sensors. Additionally, it is extremely reliable as a source, being a continually revised application note.
 
-[^Atmel-AVR443]: Atmel, “Atmel AVR443: Sensor-based Control of Three Phase Brushless DC Motor,” 2596C−AVR−07/2013, Circa 2005 [Rev. July 2013]
+[^Atmel-AVR443]: Atmel, " Atmel AVR443: Sensor-based Control of Three Phase Brushless DC Motor,"  2596C−AVR−07/2013, Circa 2005 [Rev. July 2013]
 
-Monolithic Power Systems Inc., “Brushless DC Motor Fundamentals,” AN047, Jian Zhao and Yangwei Yu, MPS: The Future of Analog IC Technology, July 2011 [Rev. May 2014]
+Monolithic Power Systems Inc., " Brushless DC Motor Fundamentals,"  AN047, Jian Zhao and Yangwei Yu, MPS: The Future of Analog IC Technology, July 2011 [Rev. May 2014]
 > This is another application note and therefore very credible. This source is particularly useful for programming the phases and providing some intuition into that, but also contains generally good and relevant information for my project.
 
-[^MPS]: Monolithic Power Systems Inc., “Brushless DC Motor Fundamentals,” AN047, Jian Zhao and Yangwei Yu, MPS: The Future of Analog IC Technology, July 2011 [Rev. May 2014]
+[^MPS]: Monolithic Power Systems Inc., " Brushless DC Motor Fundamentals,"  AN047, Jian Zhao and Yangwei Yu, MPS: The Future of Analog IC Technology, July 2011 [Rev. May 2014]
 
 -------
-[] DigiKey, “How to Power and Control Brushless DC Motors,” 2016-12-07
+[] DigiKey, " How to Power and Control Brushless DC Motors,"  2016-12-07
 https://web.mit.edu/kirtley/binlustuff/literature/electric%20machine/designOfAxialFluxPMM.pdf
 http://www.stefanv.com/electronics/escprimer.html
 https://vedder.se/2014/01/a-custom-bldc-motor-controller/
 
-I have _ resources because a very good portion of this project I learned by doing and through hobbyist spaces and resources, which are not scholarly.
+I have _ resources because a very good portion of the reference materials for this project was unofficial and I learned in hobbyist spaces and from their resources, which, of course, are not scholarly.
 
 ----------
 
 With that all out of the way, let’s take a look at the actual project:
 
+-------
 
 ## The Design
 
@@ -176,31 +193,43 @@ But, I digress. Here is ***THE EVERYBOLT*** and its features.
 
 Image of the bolt (or, even better, a .gif of it rotating with detail and without detail or maybe a half and half of with detail and without detail and it changes size while maintaining the same length)
 
-*It is the everybolt
+ - It is the everybolt
 > The bolt is an iPart, a factory part, which contains specifications for the various sizes involved in a bolt (head diameter, height of head, etc.) for many (*many*) metric bolt sizes (M3, M4, M2.5, M40, etc.). Just drop the bolt into an assembly and say what size you need and everything else is filled in for you—no more need to have dozens of separate models and files for every different bolt type.
-Custom shaft and transition lengths
+
+ - Custom shaft and transition lengths
 > Both the length of the threaded shaft and the length of the unthreaded part of the shaft are individually adjustable upon placing the bolt an assembly
-Handy defaults
+
+ - Handy defaults
 > For each bolt size, the most common threaded shaft length and the most common unthreaded shaft lengths are filled in by default.
-Adjustable detail levels
-> Sometimes you want to make a pretty presentation. Sometimes you have 254 bolts and you don’t want to make s’mores with your computer. With the click of a button (multiple buttons), this one bolt model can accommodate both of these desires by turning on/off modeled threads (extra geometry as opposed to an image of threads), any knurling, and modeled .
-Places itself where it’s needed in assemblies all in one move with iMates 
-> When you’re designing a part, you can’t put other parts in it, that’s what assemblies are for. This is sometimes inconvenient because you may forget that a bolt goes somewhere and you’d like to be able to indicate that in your part in a way that the program understands. Or if you just want to add the bolt and put it where it’s meant to go in one move as you drop it in instead of adding each bolt to the assembly and then telling each one, individually, where it’s meant to go, which is *very* convenient if you have several bolts. This is where iMates come in. The bolt has one half of the constraints that would be necessary to place it where it’s meant to go on a different part (its centerline and its bearing face). When you’re designing another part that’s meant to have a bolt, you can put the other half of the constraints in (basically, “this surface will touch an M5 bolt’s bearing surface” and/or “this line will be an M5 bolt’s centerline”). If this is done, when a bolt is dropped into the assembly, it’ll go in the correct place(s). Alternatively, these half constraints can be used to add and place a bolt into an assembly in one motion, just add bolt to assembly, click where it’s meant to go, move onto next bolt, as easy as 123..
-(Coming Soon) Imperial sizes
+
+ - Adjustable detail levels
+> Sometimes you want to make a pretty presentation. Sometimes you have 254 bolts and you don’t want to make s’mores with your computer. With the click of a button (multiple buttons), this one bolt model can accommodate both of these desires by turning on/off modeled threads (extra geometry as opposed to an image of threads), any knurling, and modeled threads.
+
+ - Places itself where it’s needed in assemblies all in one move with iMates 
+> When you’re designing a part, you can’t put other parts in it, that’s what assemblies are for. This is sometimes inconvenient because you may forget that a bolt goes somewhere and you’d like to be able to indicate that in your part in a way that the program understands. Or if you just want to add the bolt and put it where it’s meant to go in one move as you drop it in instead of adding each bolt to the assembly and then telling each one, individually, where it’s meant to go, which is *very* convenient if you have several bolts. This is where iMates come in. The bolt has one half of the constraints that would be necessary to place it where it’s meant to go on a different part (its centerline and its bearing face). When you’re designing another part that’s meant to have a bolt, you can put the other half of the constraints in (basically, " this surface will touch an M5 bolt’s bearing surface"  and/or " this line will be an M5 bolt’s centerline" ). If this is done, when a bolt is dropped into the assembly, it’ll go in the correct place(s). Alternatively, these half constraints can be used to add and place a bolt into an assembly in one motion, just add bolt to assembly, click where it’s meant to go, move onto next bolt, as easy as 123..
+
+ - (Coming Soon) Imperial sizes
 > It is just a metric bolt right now, but SAE/imperial sizes are super easy to implement. I am still undecided on whether I want SAE and metric in one bolt. On the one hand, having changes made to one be applied to the other is really appealing. But, on the other hand, it’s likely that projects will be either entirely imperial or entirely metric and not a mix, so it would be kind of pointless to have just one bolt for both purposes. In all likelihood, I’ll put both sizes in one bolt file until I can find some way to keep my changes synced between two separate files, at which point I’ll go with that. 
+
 > I am adding this here after learning more about Derived features, and it seems like that is definitely the way to go for having parts/assemblies with some common features but some different ones. I am not sure if it works with iPart factories yet, but I don’t see why not.
-(Coming Soon) Bolt Hole iFeature
+
+ - (Coming Soon) Bolt Hole iFeature
 > EZ Bolt Holes! While a configurable bolt is great (I’d even say outstanding), it’s kind of useless unless the hole it goes into doesn’t also change to accommodate different sizes. The shaft hole is easy—it’s what the bolts are named after—an M5 has a 5mm diameter shaft, an M3 a 3mm diameter shaft, an M2.5 a 2.5mm shaft, an M20 has a, you guessed it, 20mm diameter shaft. The same is true even for SAE (imperial) bolts—a 5/32 bolt has a shaft diameter of 5/32 in. Any countersinking does not follow such a pattern (otherwise an everybolt would be less amazing). Being able to tell a hole that it is an adjustable hole based on a bolt that will go in it would be wonderful (almost as wonderful as an adjustable bolt, perhaps), and it seems like [iFeatures](https://knowledge.autodesk.com/support/inventor/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/Inventor-Help/files/GUID-C2D08AAD-D86D-4720-96E4-8E0DA7374BE9-htm.html) make such a thing possible.
-(Coming ???) Different head styles
+
+ - (Coming ???) Different head styles
 > Imagine a world where there is just one bolt to drop in for every head type—from socket cap, to button, to flat, to hex, to hex washer, to slotted hex washer, to oval, to truss, to round, to pan, and everything in between—on top of every size so that separate files aren’t even needed for these different head types. Such a world would truly be utopic.
-> However, the method of storing different bolts’ sizes in one file I used is 
+>
+> However, the method of storing different bolts’ sizes in one file I used is… somewhat lacking. I’ll need a better solution going forward.
+>
 > In preparation for when it becomes possible, all necessary features of the bolt are already properly independent of one another to make this happen (if they weren’t and the shaft were dependent on the head for example, then if, say, the socket cap head was suppressed and the hex head enabled, then, if it did not just cause an error, the entire shaft would be suppressed along with the socket cap head, leaving just a floating hex head). That said, it may be impossible with the current implementation of iParts and it’ll likely also need for there to be different (derived) parts for the different head shapes.
-(Coming ???) Different [drive types](https://en.wikipedia.org/wiki/List_of_screw_drives)
+
+ - (Coming ???) Different [drive types](https://en.wikipedia.org/wiki/List_of_screw_drives)
 > Just like how I would like for there to soon be just one bolt model file to drop into assemblies for every head type as well as every size, soon there will also be just one bolt model file for every type of driver (phillips, flathead, hex, star, triangle, oval, etc.). Also just like the different head styles, all necessary features are already independent of one another (there will be a hole for the driver whether or not there’s a head to cut into, much less a specific head type).
-> 
-(Coming ???) Measurement tolerances
+
+ - (Coming ???) Measurement tolerances
 > Not all bolts are made equal. Some are smaller than they’re meant to be and some are larger than they’re meant to be. The people that designed bolts were smart and accounted for these differences in machining quality. Every measurement has a minimum and a maximum built into the standard. Inventor also has tolerances built into it for such cases. But it doesn’t seem like Inventor supports tolerances with iParts, which sucks. So, until this is added, I just use the largest of the measurements as outlined in the standard for the everybolt so that it is never under-toleranced for. And if a bolt is ever needed for an ultra-high precision use case and tolerances are not supported for iParts yet, I will simply use an inferior onlybolt (just a normal bolt).
-(Coming ???) Scaling bolt specification label
+
+ - (Coming ???) Scaling bolt specification label
 > Like how Inventor doesn’t seem to support measurement tolerances with iParts, the text feature is quite limited for modeling for my purposes. It seems like the modeling text tool was ported directly over from Inventor’s CAD drawing capabilities. For CAD drawings, standards are enforced depending on the style being used and so Inventor enforces these standards. This includes fixed options for text size (and among all the standards, the largest size is still quite small). This is fine for drawings, but not for modeling and makes labeling the heads of the different sizes of bolts with nicely sized labels impossible, not even to consider a label based on  p. And labeling the bolts (by diameter, pitch, and length) is trivial, but sizing the labels is problematic. That said, I’ve looked and but still don’t know if bolts’ labels are scaled, but, for readability, a percentage scale would be nice.
 
 ##### The Everynut
@@ -212,18 +241,20 @@ As of right now, the Everynut is all sizes of standard metric nuts.
 ##### Other Vitamins
 
 For what the motor needs (not the ESC), there are a couple vitamins of particular note:
-Shaft collar
+- Shaft collar
 Bearings
-Permanent magnets
-“Drive magnets” - magnets whose magnetic fields will be used to spin the rotor
-“Halbach magnets” - magnets whose magnetic fields will be used to concentrate the magnetic fields of the drive magnets in a [Halbach array](https://en.wikipedia.org/wiki/Halbach_array) (basically black magic)
-“Sensor magnets” - small magnets offset from the drive magnets and which have the same polarity so as to be read by the Hall effect sensors
-Bolts
-Hex Nuts
-(optional) Square nuts
-Shaft
-Copper wire
-Other than this, it’s all 3D printed. Well, part of the coils is laser cut acrylic, but it’s designed to be 3D printed. There is not really anything all that exceptional regarding the modeling or design of these parts themselves (other than the Everybolt & Everynut)... they just sort of are modeled to match the real thing without creativity.
+- Permanent magnets
+- " Drive magnets"  - magnets whose magnetic fields will be used to spin the rotor
+- " Halbach magnets"  - magnets whose magnetic fields will be used to concentrate the magnetic fields of the drive magnets in a [Halbach array](https://en.wikipedia.org/wiki/Halbach_array) (basically black magic)
+- " Sensor magnets"  - small magnets offset from the drive magnets and which have the same polarity so as to be read by the Hall effect sensors
+- Bolts
+- Hex Nuts
+- (optional) Square nuts
+- Shaft
+- Copper wire
+
+I know I just listed a good bit but other than this, it’s all 3D printed. Well, part of the coils is laser cut acrylic, but it’s designed to be 3D printed. There is not really anything all that exceptional regarding the modeling or design of these parts themselves (other than the Everybolt & Everynut)... they just sort of are modeled to match the real thing without creativity.
+
 #### Rotor
 
 ##### The Rotor’s Jobs & Purposes
@@ -246,11 +277,11 @@ Hold electromagnets & electronics
 
 If you wrap copper wire around something and apply current, you get a magnet. If you wrap copper wire around a nail and apply current, you get a better magnet. To understand why this is, one should first have somewhat of an understanding of how magnets work.
 
-Just like how copper is more electrically conductive than air, iron is more “magnetically conductive” than air (“conductivity” for magnets is called magnetic permeability).
+Just like how copper is more electrically conductive than air, iron is more " magnetically conductive"  than air (" conductivity"  for magnets is called magnetic permeability).
 
-A magnet’s magnetic field is the space around the magnet that experiences a magnetic force. This field could be thought of as a cloud of a bunch of lines that loop from one pole of the magnet to the other and passing through the magnet’s center by necessity. However, while many of these loops remain relatively close to the magnet, some go very, *very* far away. Because the “field lines” that go so far away are less numerous than the ones that are close to the magnet, the strength of the magnet is dependent on distance—closer is stronger because the magnetic field is denser and farther is weaker because the magnet field is less dense. These same rules apply for electromagnets; after all, electromagnets are basically just generators of magnetic fields you can turn on or off. (“Generators of magnetic fields” is just a long-winded way of saying permanent magnets.)
+A magnet’s magnetic field is the space around the magnet that experiences a magnetic force. This field could be thought of as a cloud of a bunch of lines that loop from one pole of the magnet to the other and passing through the magnet’s center by necessity. However, while many of these loops remain relatively close to the magnet, some go very, *very* far away. Because the " field lines"  that go so far away are less numerous than the ones that are close to the magnet, the strength of the magnet is dependent on distance—closer is stronger because the magnetic field is denser and farther is weaker because the magnet field is less dense. These same rules apply for electromagnets; after all, electromagnets are basically just generators of magnetic fields you can turn on or off. (" Generators of magnetic fields"  is just a long-winded way of saying permanent magnets.)
 
-Just like how conductivity is useful because it can be used to control where electricity goes, magnetic permeability is useful because it can be used to control where magnetic field lines go—just like how electricity follows the path of least resistance and would therefore “rather” flow through copper than the air, so too do magnetic fields who would “rather” flow through iron than the air, should each of electricity and magnetic fields’ respective options be available.
+Just like how conductivity is useful because it can be used to control where electricity goes, magnetic permeability is useful because it can be used to control where magnetic field lines go—just like how electricity follows the path of least resistance and would therefore " rather"  flow through copper than the air, so too do magnetic fields who would " rather"  flow through iron than the air, should each of electricity and magnetic fields’ respective options be available.
 
 These ideas—of a dense magnetic field being strong, iron controlling where magnetic fields tend to, and the magnetic field of a magnet necessarily traveling through the magnet’s center—can be combined to create more powerful electromagnets. By placing iron at the core of an electromagnet, the magnetic field will want to be there more and it will also want to generally stay close to the electromagnet more so that the distance it has to travel to return to the center is as small as possible because traveling a short distance takes less energy than traveling a large distance. This has the effect of making the magnetic field denser closer to the electromagnet and less dense farther from the electromagnet.
 
@@ -258,17 +289,17 @@ These ideas—of a dense magnetic field being strong, iron controlling where mag
 
 Nitpicking unimportant to the explanation:
 
-It should be noted that the magnetic permeability of the iron does not, on its own, alter the “number of magnetic field lines” and therefore the total strength of of the electromagnet; all the magnetic permeability of the iron does is alter where the magnetic field tends to be and therefore make the magnet stronger closer to the electromagnet but also weaker farther away from the electromagnet; however, because we only care about the strength close to the electromagnet, we simplify this by saying that an iron core makes the electromagnets stronger.
+It should be noted that the magnetic permeability of the iron does not, on its own, alter the " number of magnetic field lines"  and therefore the total strength of of the electromagnet; all the magnetic permeability of the iron does is alter where the magnetic field tends to be and therefore make the magnet stronger closer to the electromagnet but also weaker farther away from the electromagnet; however, because we only care about the strength close to the electromagnet, we simplify this by saying that an iron core makes the electromagnets stronger.
 
 Nitpicking even less important to the explanation:
 
-Also technically, an electromagnet with an iron core is stronger than an electromagnet without an iron core but which is otherwise equal. This is because the electromagnet induces a magnetic field in the iron (or, more accurately, aligns the magnetic fields of the iron to give it a nonzero net magnetic field in line with the magnetic field of the electromagnet) which “adds to the total number of magnetic field lines” and this effect alone is akin to adding a permanent magnet core; however, while the strength of the combination of the magnetic fields of the electromagnet and effective permanent magnet is greater, the strength of the magnetic field of *just the electromagnet* is unaffected by the addition of the effective permanent magnet. But to call the main statement of the explanation incorrect for this reason would be extremely nitpicky (perhaps as evidenced by the fact that I needed to carefully word the first sentence of this paragraph for this point to be technically true).
+Also technically, an electromagnet with an iron core is stronger than an electromagnet without an iron core but which is otherwise equal. This is because the electromagnet induces a magnetic field in the iron (or, more accurately, aligns the magnetic fields of the iron to give it a nonzero net magnetic field in line with the magnetic field of the electromagnet) which " adds to the total number of magnetic field lines"  and this effect alone is akin to adding a permanent magnet core; however, while the strength of the combination of the magnetic fields of the electromagnet and effective permanent magnet is greater, the strength of the magnetic field of *just the electromagnet* is unaffected by the addition of the effective permanent magnet. But to call the main statement of the explanation incorrect for this reason would be extremely nitpicky (perhaps as evidenced by the fact that I needed to carefully word the first sentence of this paragraph for this point to be technically true).
 
-###### Motivation: Why coils aren’t just “bare”?
+###### Motivation: Why coils aren’t just " bare" ?
 
 Many axial flux motors I see don’t have a spool still attached to the coils.[^Gieras] Instead, the wire is glued or otherwise fused together to maintain its shape and these bare coils themselves are affixed to a frame (the stator). This—the having of coils independent of and without individual spools—is for good reason, too, as magnetic strength falls off not with the inverse square of distance but with the inverse cube of the distance which means that even a small separation can have a pretty major effect on efficiency; therefore, the permanent magnets can be made to sit much closer to the coils by not having spools but instead bare coils; however, as my motor was designed to be a good, easily modifiable prototype with an emphasis on modularity, gluing coils to the stator seemed counter to that to me.
 
-This consideration culminated in the question of “how can I make the spools swappable while sacrificing as little efficiency as possible?” as I was designing the motor. I settled on 2mm thick spools attached to the stator with bolts. And the stator would have “arms” in each of the coils’ acceptor spots that the bolts could sit in, and the coils’ spools would have negatives of those arms “cut” into them so they can be as flush with the “bottom” of the stator and therefore as close to the permanent magnets as possible.
+This consideration culminated in the question of " how can I make the spools swappable while sacrificing as little efficiency as possible?"  as I was designing the motor. I settled on 2mm thick spools attached to the stator with bolts. And the stator would have " arms"  in each of the coils’ acceptor spots that the bolts could sit in, and the coils’ spools would have negatives of those arms " cut"  into them so they can be as flush with the " bottom"  of the stator and therefore as close to the permanent magnets as possible.
 
 ###### The Actual Coil Design
 
@@ -294,8 +325,27 @@ Is this the best number of turns and wire gauge? What about n-stranded wire of a
 
 ##### Reflecting on the Stator’s Design
 
-Both the stator and the coils kinda suck from a design perspective in that they’re difficult to modify and adapt. Knowing what I now know about CAD, I’d like to make both the coils and the spots the coils go in the stator adaptive based on common sketches. The coils should also be an assembly full of adaptive parts (core, spool, wire, spool’s “lid”) instead of a part with multiple components (because it is surprisingly limiting and I don’t quite understand how to use components). These all necessitate redesigning the stator and coils both from the ground up, but this is honestly kind of a welcome thing and more standardization would be good.
-Actually, having learned more about derived parts and assemblies, that seems like the way to go; one part for the stator and coils. And the stator can even be two derived parts itself; since the stator is made up of two halves which share many features but not all, there could be a “master” part with all these features and then two derived parts with unique features (like, one would have the mount for the hall effect circuit board and the other would have spots for trapped nuts).
+Why do I have a reflection section outside of my reflection section? Well, it’s because the design of the stator and coils kinda sucks. Sure, they are parameterized, but not really all that editable, adaptable, iterable, and upgradeable. Sure, they look nice, but they probably need redesigns from the ground up.
+
+Knowing what I now know about CAD, I’d like to make both the coils and their acceptor locations in the stator adaptive and based on common sketches. 
+
+The coils should also be an assembly full of adaptive parts (core, spool, wire, spool’s " lid" ) instead of a part with multiple components (because components are a surprisingly limiting feature and I don’t quite understand them).
+
+I tried to do both of these things when designing them initially, but didn’t know how and gave up pretty quickly. Redesigning/refactoring this does sound fun, which is a surprise to me given how much I normally dislike it. Maybe I just like standardization more than I dislike doing the same thing twice.
+
+------
+
+So, I’m coming back to this section a couple weeks after writing it and also happening to learn more about derived parts and assemblies. Having done that, they really seem like the way to go, with one master part containing just sketches used by both the stator shell and the coils (each with other things derived from there). The stator shell can actually even be a subassembly itself containing two child parts derived from a master stator shell (the master stator shell itself being derived from the master stator sketches part). This is because the stator is (meant to be) made up of two halves which share many features but not all, which fits the bill for derived parts pretty much to the letter. (Like, one stator shelf half would have the mounting place for the hall effect circuit board and the other would have spots for threaded inserts or trapped nuts for bolts to hold the stator shell together to interface with.)
+
+I threw this chart of these dependencies together in Lucidchart:
+
+| ![404 Alt Text Not Found. What, you try making an informative alt text for a flowchart, it’s not easy](<./Documentation Graphics/Designs/Stator/New Stator Design Idea Dependency Diagram.png>) |
+|:--------------------------------------------:|
+|               	Pink = parent derived part ; Light blue = part ; Blue = subassembly ; Orange = assembly             	|
+
+And grey is other, various parts like nuts and electronics and, yes, of course, the ***EVERYBOLT***.
+
+-------
 
 ## Electronics
 
@@ -307,34 +357,47 @@ Actually, having learned more about derived parts and assemblies, that seems lik
 
 I made this (very) rough layout of what all of the electronics will eventually look like, including the regeneration circuit, in Lucidchart:
 
+<center>
 
+| ![Informative, descriptive alt text for diagram](<./Documentation Graphics/Electronics/Overall Electronics Layout-Refined.png/>) |
+|:--------------------------------------------:|
+|               	Okay, so maybe I should just learn some ECAD program               	|
 
+</center>
+
+For now, I’ll focus on just the controlling of the motor and the 
 #### H-Bridges, a Lesson in Expectation & Reality, and Trouble (oh, so much trouble indeed)
 
 | ![Off the shelf arduino H-bridge BTS7960](<./Documentation Graphics/>) | 	| ![My janky DIY H-bridge circuit](<./Documentation Graphics/>) |
 |:----------------------------------------------------------------------------------:| --- |:-------------------------------------------------------------------------------------------:|
-| Expectation: being able to create something like this neat, clean, tidy, and further synonyms highlighting the organization of the off-the-shelf arduino BTS7960 H-bridge components                                                                              	| vs  |                                       	Reality: a bird’s nest of wires stuck into a breadboard with indicator lights which do indeed indicate, among other things, a lack of confidence in one’s work                                    	|
+| Expectation: being able to create something like this neat, clean, tidy, and further synonyms highlighting the organization of the off-the-shelf arduino BTS7960 H-bridge components                                                                              	| **vs**  |                                       	Reality: a bird’s nest of wires stuck into a breadboard with indicator lights which do indeed indicate, among other things, a lack of confidence in one’s work                                    	|
 
-It is somewhat misleading for H-bridges to be a subsection of the greater ESC section because all the ESC really boils down to (not counting regenerative breaking) are H-bridge circuits and H-bridge code. At least, at my current understanding this is the case.
+It is somewhat misleading for H-bridges to be a subsection of the greater ESC section because all my ESC really boils down to (not counting regenerative breaking) is H-bridge circuits and H-bridge code.
 
 So, what is an H-bridge?
 
 ##### What an H-bridge is
 
-Description of H-bridge (goal: turn DC to AC, does this with MOSFET screwery)
+An H-bridge is a circuit that allows a voltage to be applied across a load in either direction. In other words, it can turn DC to AC, which makes them perfect for controlling motors because the electromagnets need to be turned off and on rapidly and in a controlled manner. 
+
+To control the direction of a motor, an H-bridge uses four switches (in this case, MOSFETs) arranged in a "bridge" configuration so current can flow through the load in either direction depending on how the switches are activated.
 
 |	![Cyril B’s graphic for the structure of an H-bridge](https://upload.wikimedia.org/wikipedia/commons/d/d4/H_bridge.svg)	|
 |	:--:	|
-|	Structure of an H-bridge (highlighted in red; kinda looks like the capital letter “H”) from Wikipedia’s H-bridge article. The M represents a motor (or a single phase of a motor’s) with its two inputs.	|
+|	It is called an H-bridge because it is shaped like the letter "H," with the load at the center of the H and the voltage source at each end.	|
+
+The speed of the motor can be controlled by adjusting the duty cycle of the switching signals applied to the H-bridge. If the switches are activated and deactivated at a high frequency, the motor will rotate faster; if the switches are activated and deactivated at a lower frequency, the motor will rotate slower.
+
 
 ##### Off-the-Shelf arduino BTS7960 H-bridges
 ###### † Initial Experimentation
 
 Arduino’s H-bridges seemed like a great tool and perfect for the job I had in mind, at least to get things working initially before making them from scratch as well if I had time.
 
+H-Bridges
 L_EN and R_EN are both just wired straight to 5V because, as long as PWM is done correctly (only one at a time), this is fine.
 L_IS and R_IS are current alarms and won't be used.
-This is partly to save pins, as three H-Bridges are needed.
+This is partly to save pins as three H-Bridges are needed.
 
 ```arduino
 // BTS7960 arduino h-bridge motor driver sketch
@@ -380,7 +443,7 @@ void loop() {
 }
 ```
 
-Video of magnet flipper captioned with something like “our trained mechano-wildlife videographers were able to capture the ever-skittish magnet in its natural habitat where it performs a jumping dance to spread its field in the hopes of attracting a mate of opposite polarity. Once it spots us, it attempted to flee.”
+Video of magnet flipper captioned with something like " our trained mechano-wildlife videographers were able to capture the ever-skittish magnet in its natural habitat where it performs a jumping dance to spread its field in the hopes of attracting a mate of opposite polarity. Once it spots us, it attempted to flee." 
 
 Initial results were clearly promising! But, this did not last very long at all.
 
@@ -391,33 +454,20 @@ Okay, rant over. The point is, apparently [the BTS7960s are not rated for as big
 
 ##### Introduction to My DIY H-Bridges
 
-“Heat’s a problem with these specialized circuits because they are not designed for this application and are unconfigurable so I’m going to do as this project’s overarching philosophy preaches and break them down into their base parts so I can understand and make them myself. They’ll be even more custom and also won’t have the issue of getting too hot and will be easy and quick and fun to make.” … is approximately what past me thought to herself, so full of optimistic naïveté. She was right about one out of three things though: they were kinda fun to make (though the jury’s still out on that). I was also going to make one myself eventually anyway, I just didn't expect to be doing it now.
+" Heat’s a problem with these specialized circuits because they are not designed for this application and are unconfigurable so I’m going to do as this project’s overarching philosophy preaches and break them down into their base parts so I can understand and make them myself. They’ll be even more custom and also won’t have the issue of getting too hot and will be easy and quick and fun to make."  … is approximately what past me thought to herself, so full of optimistic naïveté. She was right about one out of three things though: they were kinda fun to make (though the jury’s still out on that). I was also going to make one myself eventually anyway, I just didn't expect to be doing it now.
 
 On the bright side, I did indeed follow this project’s overarching philosophy in this way but also another—I dove deeper into a single something rather than shallowly into several somethings. I’ll talk about that more in the reflection, but the important thing now is that single something I learned a lot about: MOSFETs.
 
 
 ### DIY H-Bridges
 
-Ah, the reality half of “Expectation vs. Reality,” what a marvelous, messy, and marvelously messy side of things. So much excitement—or disappointment, depending on how you look at it—over here. The suspense of not knowing how the potential will be realized. More flowery introductory sentences that raise expectations to those for a light, poetic reading experience as a sort of meta-commentary on expectations contrasted with reality through the rhetorical irony of that divide being perpetuated by a thought making commentary on it and the absurdism of—okay I’ll stop, I’ve had my fun. Where was I? Oh, right, MOSFETs <sup>~~hey, it’s a hypophora~~</sup>
+Ah, the reality half of " Expectation vs. Reality,"  what a marvelous, messy, and marvelously messy side of things. So much excitement—or disappointment, depending on how you look at it—over here. The suspense of not knowing how the potential will be realized. More flowery introductory sentences that raise expectations to those for a light, poetic reading experience as a sort of meta-commentary on expectations contrasted with reality through the rhetorical irony of that divide being perpetuated by a thought making commentary on it and the absurdism of—okay I’ll stop, I’ve had my fun. Where was I? Oh, right, MOSFETs <sup>~~hey, it’s a hypophora~~</sup>
 
 First though, my making of my own H-bridge circuits ended up being much more involved than originally thought (which really shouldn’t be all that surprising to me at this point) so I promoted its heading to get more subheading options and include more details!
 
-#### *How* an H-bridge is
-
-I explained earlier what an H-bridge is and does in a sort of hand-wavey fashion. Let’s do the (more) nitty-gritty now.
-
-|	![H-Bridge circuit diagram](<./Documentation Graphics/Electronics/H-bridges/H-bridge circuit schematic KiCad.svg>)	|
-|	:--:	|
-|	Circuit schematic for my DIY H-bridges made in KiCad.	|
-
-Download the KiCAD files here
-
-
-
-
 #### Creating an H-bridge
 
-As sometimes painful as it was to make the H-bridges, It did feel good to make my own circuit without following any online tutorial. It reminds me of when MCAD was just starting to “click” for me after I had a handle on the basic features. It’s nice to have even just a small amount of the understanding I now do with MCAD with electronics.
+As sometimes painful as it was to make the H-bridges, It did feel good to make my own circuit without following any online tutorial. It reminds me of when MCAD was just starting to " click"  for me after I had a handle on the basic features. It’s nice to have even just a small amount of the understanding I now do with MCAD with electronics.
 
 --------
 
@@ -439,29 +489,28 @@ So great was my overestimation in my ability and understanding that in my next a
 
 
 
-
 So yeah, big mistake. I was thinking about 3 things when deciding to go down this route:
 1. Doubt—because I'm going to be making it into a protoboard anyway, it's also going to become small and compact anyway no matter what I do therefore there’s no reason to not make it big now
 2. Flashback—when a tutoring student says "okay, I understand it now, give me a hard one!" you never give them a really hard one without confirming that they’re ready somehow. Never.
 3. Deja Vu—when I was starting with MCAD (and even now still) and thought I finally had a handle on something and could imagine how to make a design and the steps involved, the steps I imagined could indeed be done, but the method turned out to be bad or inefficient, and that the feeling of understanding I first had with MCAD was the same as my feelings in the moment.
 
-But, “it’s such a simple circuit,” I thought. "It's fineeeeee." So oh well, I learned my lesson: breadboards are, among other things, drafting tools and so making drafts easily editable is the point, so don’t fight that.
+But, " it’s such a simple circuit,"  I thought. "It's fineeeeee." So oh well, I learned my lesson: breadboards are, among other things, drafting tools and so making drafts easily editable is the point, so don’t fight that.
 
-I thought I could fight that because I had seen many examples of breadboards which were completely packed full of stuff and still worked perfectly, and I thought that was quite cool. However, the key difference between those and mine is that mine is the first draft, not the final one. They also have experience. And custom-cut wires (not exclusively “prototyping” jumper wires). And ECAD.
+I thought I could fight that because I had seen many examples of breadboards which were completely packed full of stuff and still worked perfectly, and I thought that was quite cool. However, the key difference between those and mine is that mine is the first draft, not the final one. They also have experience. And custom-cut wires (not exclusively " prototyping"  jumper wires). And ECAD.
 
 That last one is really important for compact circuits on breadboards because dense circuits are, for most all intents and purposes (and especially for someone like me who is inexperienced with electronics), read-only and pretty much undiagnosable because it’s hard to trace connections. I did catch *some* errors in mine (flipped diodes, wrong rail jumped to, possible short) thanks to a multimeter and sketching out the circuit:
 
 | ![Dense H-bridge circuit on breadboard next to sketch of the H-bridge circuit](<./Documentation Graphics/Electronics/H-bridges/V1 Dense Breadboard Next to Layout Sketch.jpeg>) |
 |:---------------------------------------------------------------------:|
-|                            Having a plan helps. Also, hey, that looks like an “H” now.                      	|
+|                            Having a plan helps. Also, hey, that looks like an " H"  now.                      	|
 
 Interestingly, the dense circuit did actually cycle the voltage like it was meant to, just no where near as much as it should have:
 
-| ![Using a multimeter on the compact H-bridge circuit](<./Documentation Graphics/Electronics/H-bridges/V1 Dense Breadboard Voltage Fluctuation Too Small.mp4>) |
+| {{< video src="./Documentation Graphics/Electronics/H-bridges/V1 Dense Breadboard Voltage Fluctuation Too Small.mp4" type="video/mp4" >}} |
 |:---------------------------------------------------------------------:|
-|                            The dense H-bridge’s voltage switching performance.                         	|
+|                            Using a multimeter on the compact H-bridge circuit revealing its voltage switching performance.                         	|
 
-| ![Manually giving and removing power from MOSFET control pin to test it](<./Documentation Graphics/Electronics/H-bridges/V1 Manually Switching MOSFET.mp4>) |
+| {{< video type="video/mp4" src="./Documentation Graphics/Electronics/H-bridges/V1 Manually Switching MOSFET.mp4" >}} |
 |:---------------------------------------------------------------------:|
 |                            The voltage across a MOSFET when I manually connect its control pin to power and ground.                         	|
 
@@ -472,11 +521,22 @@ Regardless of the errors that I did catch, I did fundamentally misunderstand MOS
 ##### **G**ate, **D**rain, and **S**ource
 *A ~~Tragedy~~ Story of Electricity and Learning in Three Parts*
 
-A MOSFET, a metal–oxide–semiconductor field-effect **transistor**, is a type of transistor, a digital switch. I had thought they were like a doorway—people can go through both ways if the door is open and cannot go through if it is closed. Indeed, some do work this way, but those are special cases. The more broad case has a Source, a Drain, and a Gate. If the gate receives voltage, the FET allows current through. However, that current can only flow in a specific direction: the electrons enter through the Source and exit through the Drain. In other words, if the drain side must be the grounded side and more negative than the source side and if it’s not, current will not flow.
+A MOSFET, a metal–oxide–semiconductor field-effect **transistor**, is a type of transistor, a digital switch. I had thought they were like a doorway—people can go through both ways if the door is open and cannot go through if it is closed. Indeed, some do work this way, but those are special cases. The more broad case has a Source, a Drain, and a Gate. If the gate receives voltage, the FET allows current through. However, that current can only flow in a specific direction: the electrons enter through the Source and exit through the Drain. In other words, if the drain side must be the grounded side and more negative than the source side and if it’s not, current will not flow. In hindsight, this does make a lot more sense from a chemistry perspective than what I had originally thought.
 
-Also, remember how I said that the backs of the MOSFETs are connected to “one of their pins” for “some reason” and that “I’ll get back to MOSFETs later.” Well, later is now, the pin the metal backs are connected to is the drain pin (i.e., ground), and so it is based in some logic (establishing common ground is often important). Personally, I am not advanced enough in electronics to appreciate this decision so it will still bug me.
+Also, remember how I said that the backs of the MOSFETs are connected to " one of their pins"  for " some reason"  and that " I’ll get back to MOSFETs later."  Well, later is now, the pin the metal backs are connected to is the drain pin (i.e., ground), and so it is based in some logic (establishing common ground is often important). Personally, I am not advanced enough in electronics to appreciate this decision so it will still bug me.
+
+###### Chemistry of MOSFETs
+
+Y’know what doesn’t (sometimes) bug me? Chemistry! I think the " why"  behind MOSFETs and their GDS stuff is actually pretty interesting, so…
+
+There are two main types of MOSFETs: n-channel and p-channel. In an n-channel MOSFET, the channel is made of n-type semiconductor material, which means it is doped with impurities that give it an excess of electrons. In a p-channel MOSFET, the channel is made of p-type semiconductor material, which means it is doped with impurities that give it a deficiency of electrons, or "holes." The electrical standard cares about these " holes"  and current flowing from positive to negative because old dead guys said so (even though it’s technically the other way around with the electrons and all that, but I digress).
+
+The source and drain of a MOSFET are the two terminals that allow current to flow through the transistor. The gate terminal is insulated from the channel by a thin layer of oxide, which is why it is called a "metal-oxide-semiconductor" transistor.
+
+When a voltage is applied to the gate terminal, it creates an electric field that modifies the conductivity of the channel. If the voltage is positive (for an n-channel MOSFET) or negative (for a p-channel MOSFET), it attracts electrons to the gate and creates a conductive channel between the source and drain. This allows current to flow through the transistor from the source to the drain. If the voltage is removed from the gate, the channel becomes non-conductive and the transistor is turned off.
 
 ##### Remaking the H-Bridge Circuit Properly to Make it Useful
+
 
 On top of spreading things out, I thought it would be clearer if I doubled up the breadboards so only the outer rails are used on both sides and let me just say, there’s a reason entropy wins in the end. Although, in this case, I’d say it actually has less disorder spread out:
 
@@ -488,24 +548,31 @@ The outer rails are the H-bridge’s input current (DC) and the middle rails are
 
 I say it’s complete, but the multimeter will be the judge of that…
 
-| ![Testing new H-bridge circuit with multimeter](<./Documentation Graphics/Electronics/H-bridges/V2 Spread Out Breadboard Progress 3 - Multimeter.mp4>) |
+| {{< video type="video/mp4" src="./Documentation Graphics/Electronics/H-bridges/V2 Spread Out Breadboard Progress 3 - Multimeter.mp4" >}} |
 |:---------------------------------------------------------------------:|
 |                            	Survey says…                           	|
 
 That’s what you like to see! I didn’t even have to debug anything because I didn’t make any errors to begin with. Part of this I’m sure can be attributed to my better understanding, but everything being spread out and easy to see where everything is is probably the main reason. And it’s also much more readable, so will be a far better reference when making protoboards. No wonder people stick to procedure…
 
-On the subject of readability, I thought it would be cool, especially for the display for the presentation, to put LED indicator lights directly connected to the gate on each MOSFET. This way, you could see the “X” of where the final AC signal comes from. 
+On the subject of readability, I thought it would be cool, especially for the display for the presentation, to put LED indicator lights directly connected to the gate on each MOSFET. This way, you could see the " X"  of where the final AC signal comes from. 
 
 | ![H-bridge breadboard circuit with LED indicator lights](<./Documentation Graphics/Electronics/H-bridges/V2 Spread Out Breadboard Progress 4 - LEDs.jpeg>) |
 |:---------------------------------------------------------------------:|
 |                            	Adding the lights…                           	|
 
-| ![Video of the H-bridge breadboard circuit with LED indicators running](<./Documentation Graphics/Electronics/H-bridges/V2 Spread Out Breadboard Progress 5 - LEDs Blinking.mp4>) |
+| {{< video type="video/mp4" src="./Documentation Graphics/Electronics/H-bridges/V2 Spread Out Breadboard Progress 5 - LEDs Blinking.mp4" >}} |
 |:---------------------------------------------------------------------:|
 |                            	X marks the spot!                           	|
 
-I was indeed right that the LEDs help show where the output is getting its current.
+The indicator LEDs really do help to show how the current is flowing through the output load.
 
+I did make an H-bridge in KiCad later, and with the components spread out, it’s pretty easy to see what’s what:
+
+|	![H-Bridge circuit diagram](<./Documentation Graphics/Electronics/H-bridges/H-bridge circuit schematic KiCad.svg>)	|
+|	:--:	|
+|	Circuit schematic for my DIY H-bridges made in KiCad.	|
+
+Given that mine actually works for the job it’s designed for and the arduino BTS7960 doesn’t, it would appear that looks are not everything when it comes to expectation and reality. Another dub for the DIY community.
 ##### Hot FETs
 
 Nonononoooo
@@ -514,7 +581,7 @@ When I tried the breadboard circuit hooked up to an electromagnet as a load, it 
 The heat is what catalyzed my switching away from BTS7960’s in the first place, so I’m a bit sour that it wasn’t magically resolved by running away.
 Oh well. The MOSFETs should still be more adaptable (or, at least have the failsafe that, should push come to shove, have practically drop-in equivalents which are rated for higher current). I was also going to switch to MOSFETs eventually anyway so would have to face this issue no matter what. I’m sure I have a bandaid solution if I can’t diagnose why.
 
-The [IRLZ34N MOSFET’s datasheet](hyperlink this datasheet) says that they should be rated for the current my motor is rated for and yet they’re running hot, even when I used heatsinks. For now, I can just use a giant heat sink, but I do want to know if they’ve been damaged by the heat or if I’m just being paranoid.
+The [IRLZ34N MOSFET’s datasheet](https://www.mouser.com/datasheet/2/196/Infineon_IRLZ34N_DataSheet_v01_01_EN-1732809.pdf) says that they should be rated for the current my motor is rated for and yet they’re running hot, even when I used heatsinks. For now, I can just use a giant heat sink, but I do want to know if they’ve been damaged by the heat or if I’m just being paranoid.
 
 ###### MOSFET Auto-tester With Oscilloscope
 
@@ -524,9 +591,9 @@ There isn’t much to this circuit other than just hooking a MOSFET up to an osc
 |:-----------------------------------:|:-----------------------------------:|
 |           	Bird's eye view of the oscilloscope and test circuit           	|            	Closeup of the oscilloscope and test circuit                 	|
 
-| ![I don't know morse code](<./Documentation Graphics/Electronics/H-bridges/MOSFET Tester Setup Controlled with Oscilloscope.mp4>) |
+| {{< video type="video/mp4" src="./Documentation Graphics/Electronics/H-bridges/MOSFET Tester Setup Controlled with Oscilloscope.mp4" >}} |
 |:---------------------------------------------------------------------:|
-|                            	Controlling the MOSFET with the computer running the Analog Discovery 2 software.                            	|
+|                            	Controlling the MOSFET with the computer running the Analog Discovery 2 software. (I don’t know morse code.)                            	|
 
 Results seem to indicate that the MOSFETs are still functional. Because I am still paranoid (especially without enough time to get replacement MOSFETs), I’d rather be better cautious than reckless.
 
@@ -547,7 +614,7 @@ The MOSFETs were a bit of a pain to solder perpendicular to the protoboard becau
 |                            	MOSFET Drains sit concerningly close to one another when arranged on a protoboard.                            	|
 
 | ![Protoboard in a metalworking vice](<./Documentation Graphics/Electronics/H-bridges/V3 Protoboard Progress 2 - FET Drains Touch.jpeg>) | ![Increasing the space between drains](<./Documentation Graphics/Electronics/H-bridges/V3 Protoboard Progress 3 - Dremel FETs.jpeg>) |
-|:-----------------------------------:|:-----------------------------------:|
+|-----------------------------------:|:-----------------------------------|
 |           	It's a good thing           	|            	I have a dremel                 	|
 
 With some gentle convincing, there is more space between the FETs’ drains. I was careful to go slowly so as to not heat up the MOSFETs.
@@ -570,11 +637,236 @@ Now, what to do about the heat? Well, I have two large heat sinks with these guy
 
 ##### Major Iterations of H-Bridges
 
-| ![Evolution of H-bridge iterations](<./Documentation Graphics/Electronics/H-bridges/V4 Mounted on Heatsink - All Versions Compared.mp4>) |
+| {{< video type="video/mp4" src="<./Documentation Graphics/Electronics/H-bridges/V4 Mounted on Heatsink - All Versions Compared.mp4" >}} |
 |:---------------------------------------------------------------------:|
 | ![Evolution of H-bridge iterations](<./Documentation Graphics/Electronics/H-bridges/V4 Mounted on Heatsink - All Versions Compared.jpeg>) |
 |                            	Evolution of H-bridge iterations                            	|
 
+##### H-Bridge Code
+
+```arduino
+// BTS7960 arduino H-bridge motor driver sketch 
+
+// pins
+const int R_PWM = 3; // Pin for control of one side of the H-bridge
+const int L_PWM = 5; // Pin for control of the other side of the H-bridge
+const int L_IS = 7; // overcurrent pin
+const int R_IS = 5; // overcurrent pin
+
+// enable pins not set because they are wired to HIGH
+
+void setup() {
+  // Set the control pins as outputs
+  pinMode(R_PWM, OUTPUT);
+  pinMode(L_PWM, OUTPUT);
+  pinMode(R_IS, INPUT);
+  pinMode(L_IS, INPUT);
+
+  // start serial
+  Serial.begin(9600);
+  Serial.println("Serial Begin");
+}
+
+void loop() {
+
+  // Drive the motor forward at 100%
+  analogWrite(L_PWM, 0);
+  analogWrite(R_PWM, 255);
+  delay(500);
+
+  analogWrite(R_PWM, 128);
+  analogWrite(L_PWM, 0);
+  delay(1000); // Run the motor for 1 second
+
+  // Stop the motor
+  analogWrite(R_PWM, 0);
+  analogWrite(L_PWM, 0);
+  delay(1000); // Pause for 1 second
+  
+  // check for overcurrent
+   if(digitalRead(R_IS)){
+     Serial.print("R OVERCURRENT @ ");
+     Serial.println(millis());
+   }
+   if(digitalRead(L_IS)){
+     Serial.print("L OVERCURRENT @ ");
+     Serial.println(millis());
+   }
+  
+  // drive other way
+  analogWrite(R_PWM, 0);
+  analogWrite(L_PWM, 255);
+  delay(500);
+```
+
+```arduino
+// BTS7960 arduino h-bridge motor driver sketch 
+
+// pins
+// r and l are directions
+// these are all MOSFET gate pins
+const int R_pwr = 7; // motor rightside control pin for letting + through (not PWM)
+const int R_gnd = 6; // motor rightside control pin for letting - through (PWM)
+const int L_pwr = 4; // motor leftside control pin for + (not PWM)
+const int L_gnd = 3; // motor leftside control pin for - (PWM)
+
+// variables
+int max_power = 255;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(R_pwr, OUTPUT);
+  pinMode(R_gnd, OUTPUT);
+  pinMode(L_pwr, OUTPUT);
+  pinMode(L_gnd, OUTPUT);
+  
+  // digitalWrite(R_IS, LOW);
+  // digitalWrite(L_IS, LOW);
+  // digitalWrite(R_EN, HIGH);
+  // digitalWrite(L_EN, HIGH);
+  Serial.begin(9600);
+  Serial.println("Serial Begin");
+}
+
+void rightPower(int power){
+  analogWrite(R_gnd, 0);
+  digitalWrite(L_pwr, LOW);
+  digitalWrite(R_pwr, HIGH);
+  analogWrite(L_gnd, power);
+}
+
+void leftPower(int power){
+  analogWrite(L_gnd, 0);
+  digitalWrite(R_pwr, LOW);
+  analogWrite(R_gnd, power);
+  digitalWrite(L_pwr, HIGH);
+}
+
+void noPower(){
+  digitalWrite(R_pwr, LOW);
+  analogWrite(R_gnd, 0);
+  digitalWrite(L_pwr, LOW);
+  analogWrite(L_gnd, 0);
+}
+
+void loop() {
+  float power_frac = 1;  // used as an easy multiplier for power but was temporarily removed (e.g. 0.5 for 50% power) 
+  int delay_time = 5000;
+
+  Serial.println("RIGHT");
+  rightPower(255);
+  delay(delay_time);
+  noPower();
+  delay(100);
+  
+  Serial.println("LEFT");
+  leftPower(255);
+  delay(delay_time);
+  noPower();
+  delay(100);
+}
+```
+
+HallEffectTest
+```arduino
+// pins
+const int S1Pin = A0;  // S1 analog input pin
+
+int S1Value = 0;  // value read from the hall effect S1
+
+void setup() {
+  // initialize serial communications at 9600 bps
+  Serial.begin(9600);
+}
+
+void loop() {
+  // read the analog in value:
+  S1Value = analogRead(S1Pin);
+
+  // print the results to the Serial Monitor:
+  //Serial.print("S1 = ");
+  Serial.println(S1Value);
+ 
+  // wait 2 milliseconds before the next loop for the analog-to-digital
+  // converter to settle after the last reading:
+  delay(2);
+}
+```
+
+Simple rotation (very work in progress, I just wanted something to work so I could code in the phases but ran into issues with the BTS7960s again)
+```arduino
+// BTS7960 arduino h-bridge motor driver sketch 
+
+// pins
+// r and l are directions
+// const int R_IS = 2;  // IS = tell you you're exceeding current (if device is overtaxxed)
+// const int R_EN = 6;  // en = enable
+const int phase_a_R_PWM = 2;  // pwm = give less power
+const int phase_a_L_PWM = 3;
+const int phase_b_R_PWM = 4;
+const int phase_b_L_PWM = 5;
+const int phase_c_R_PWM = 6;
+const int phase_c_L_PWM = 7;
+const int hall_a = A0;
+const int hall_b = A1;
+const int hall_c = A2;
+const int potentiometer = A3;
+const int phase_a[6] = {1,1,0,-1,-1,0};
+const int phase_b[6] = {-1,0,1,1,0,-1};
+const int phase_c[6] = {0,-1,-1,0,1,1};
+int cycle = 0;
+
+
+void setup() {
+  // put your setup code here, to run once:
+ // pinMode(R_IS, INPUT);
+ // pinMode(R_EN, OUTPUT);
+ pinMode(phase_a_R_PWM, OUTPUT);
+ pinMode(phase_a_L_PWM, OUTPUT);
+ pinMode(phase_b_R_PWM, OUTPUT);
+ pinMode(phase_b_L_PWM, OUTPUT);
+ pinMode(phase_c_R_PWM, OUTPUT);
+ pinMode(phase_c_L_PWM, OUTPUT);
+ pinMode(potentiometer, OUTPUT);
+ // pinMode(L_IS, INPUT);
+ // pinMode(L_EN, OUTPUT);
+ // digitalWrite(R_IS, LOW);
+ // digitalWrite(L_IS, LOW);
+ // digitalWrite(R_EN, HIGH);
+ // digitalWrite(L_EN, HIGH);
+}
+  Serial.begin(9600);
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int control_motor = 1024 - analogRead(potentiometer);
+
+  // determine cycle
+  /*
+  int hall_a_val = analogRead(hall_a);
+  int hall_b_val = analogRead(hall_a);
+  int hall_c_val = analogRead(hall_a);
+  */
+  
+  cycle++;
+  if(cycle == 6) {
+    Serial.println(control_motor);
+    cycle = 0;
+  }
+  
+  // set phase powers
+  analogWrite(phase_a_R_PWM, phase_a[cycle]*255);
+  analogWrite(phase_a_L_PWM, phase_a[cycle]*255);
+  analogWrite(phase_b_R_PWM, phase_b[cycle]*255);
+  analogWrite(phase_b_L_PWM, phase_b[cycle]*255);
+  analogWrite(phase_c_R_PWM, phase_c[cycle]*255);
+  analogWrite(phase_c_L_PWM, phase_c[cycle]*255);
+
+
+  
+  delay(control_motor);
+}
+```
 #### A Brief Aside on the Importance of Resistors
 
 The resistors that connect to the MOSFETs’ gate input seemed kind of weird and unnecessary to me.
@@ -583,7 +875,7 @@ To my surprise, they’re actually vital. This is because the MOSFETs act as cap
 
 Now, 0 resistance sounds great and it seems silly to add some; however, because of Ohm’s Law of `V = IR` and `I = V/R`. This means you'll effectively get ≈infinite current at the instant of trying to activate the gate pin, which would be *bad* and destroy basically everything.
 
-Obviously resistance is not actually *equal* to 0 but instead just *approximately* equal to 0. This is still what those in the industry call “bad,” so we add some resistance so there's not this enormous current spike.
+Obviously resistance is not actually *equal* to 0 but instead just *approximately* equal to 0. This is still what those in the industry call " bad,"  so we add some resistance so there's not this enormous current spike.
 
 This was news to me and I found it interesting, so I wanted to share.
 
@@ -607,12 +899,11 @@ While regeneration may not be within the scope of this project, I did do some pr
 
 #### Rough Circuitry Layout
 
-For the regen circuit, I’ll need voltage regulators and therefore an understanding of how they work. The goal of this side project is to gain somewhat of an understanding of how voltage regulators work by converting the 50 V DC from a battery I made into 5 V DC I can use to charge my phone.
 
 
 #### Voltage Regulator Side Project
 
-When you hear “electric scooter,” what do you think? If your answer is anything except for “a phone charger,” I think that's a problem in need of addressing and part of what this side project seeks to fix.
+When you hear " electric scooter,"  what do you think? If your answer is anything except for " a phone charger,"  I think that's a problem in need of addressing and part of what this side project seeks to fix.
 
 ##### Background
 
@@ -621,12 +912,12 @@ So I have this battery I made for my electric scooter that's 13S 2P of 18650's a
 Sadly, the laws of nature dictate that the fruit be forbidden and such a thing is impossible indeed. It would seem this side project was never meant to be; ended before it could begin…
 
 
-Nah, I’m just kidding. Someone gave me this handy voltage regulator link datasheet that will work a treat and do just what I need.
+Nah, I’m just kidding. Someone gave me this handy voltage regulator datasheet that will work a treat and do just what I need.
 
 image
 
 Before we get to that, though, you may be wondering how this in any way is connected to my motor. Good question.
-The answer is that it's not. Or, at least, not directly. To make the regeneration circuit, I’ll need to use voltage regulators and also the knowledge and skill to be able to do this and implement them. I do not have this so this side project lets me kill two birds with one stone by letting me gain experience and practice with voltage regulators (a useful thing in its own right) and also helping me to be able to capture more pocket monsters.
+The answer is that it's not. Or, at least, not directly. To make the regeneration circuit, I’ll need to use voltage regulators and therefore the knowledge and skills to be able to implement them. I do not have this so this side project lets me kill two birds with one stone by letting me gain experience and practice with voltage regulators (a useful thing in its own right) and also helping me to be able to capture more pocket monsters.
 
 ##### The Process
 
@@ -644,40 +935,45 @@ cut at some female USB-As to use as outputs, and the input will be a female XT60
  - Battery still measures voltage and appears undamaged (thank goodness)
  - {results from testing voltage regulator with benchtop power supply}
  - Used multimeter to test continuity in male XT60 and it measured none... the search continues
+
 ## Reflection
 
 ### What I Learned
 
-Before I discuss the other aspects of my reflection, I would first like to talk about all that I learned by doing this project as that was my primary focus ^(and I need to hype myself up first)^. There is (I think) good news in that I learned too much to list, so I’ll mostly be focusing on the things I thought were particularly of note and those which I haven’t mentioned already throughout this post.
+Before I discuss the other aspects of my reflection, I would first like to talk about all that I learned by doing this project as that was my primary focus <sup>(and I need to hype myself up first)<\sup>. There is (I think) good news in that I learned too much to list, so I’ll mostly be focusing on the things I thought were particularly of note and those which I haven’t mentioned already throughout this post.
 
-#### Knowledge:
-that I still have a lot more to learn about even just MOSFETs (Bill’s promised land)
+#### Knowledge
+that I still have a lot more to learn about even just MOSFETs (the cold-running promised land)
 More in depth physics of electromagnets
 
 ##### Electronic Components
-Hall effect sensors
-MOSFETs
-Diodes
-Capacitors
 
+- Hall effect sensors
+- MOSFETs
+- Diodes
+- Capacitors
+- H-bridges
+- Bridge rectifiers
 
+#### Skills
 
-#### Skills:
-Markdown
-blog writing/styling/formatting (one area of improvement would be that I’m overexplaining some things that could just be left as a citation because I find it fun, but I recognize that this habit can potentially *really* clutter things and obscure my actual project & work)
-Soldering surface mount
+- Soldering surface mount
 
-##### CAD:
-Much more Inventor/mCAD overall refinement
-mCAD presentations
-mCAD drawings
-mCAD iParts
-mCAD derived parts
-mCAD linking parameters
-Introductory eCAD
+- Markdown
+- HTML relearning, refinement, and new learning
+- blog writing/styling/formatting (one area of improvement would be that I’m overexplaining some things that could just be left as a citation because I find it fun, but I recognize that this habit can potentially *really* clutter things and obscure my actual project & work)
 
-#### Some personal growth, too:
-A hard lesson in piecewise progress and more rigid structures to enforce greater documentation as I go… making and posting progress updates seems like the right way forward
+##### CAD
+- Much more Inventor/MCAD overall refinement
+	- mCAD presentations
+	- mCAD drawings
+	- mCAD iParts
+	- mCAD derived parts
+	- mCAD linking parameters
+- Introductory eCAD
+
+#### Some personal growth, too
+A hard lesson in piecewise progress and more rigid structures to enforce greater documentation as I go… making daily commits and posting regular progress updates seems like the right way forward
 
 
 
@@ -697,27 +993,107 @@ In any case, what goes into making a speed controller for a BLDC electric motor 
 
 ### Meeting of Goals?
 
-No way! Well, sort of. It doesn’t entirely feel like it to me. While I did make accomplishments relevant to, in support of, and as a part of this project that were not set as goals, my product does not function and this project is very much still incomplete to me. That said, because the goals were not defined in adequately specific terms to demand a functional product, they were met. I think this is a good thing though, because my definition of meeting goals or a successful project is warped to require the content of the project being successful itself, when that’s not always the case; I have learned that I should take extra care with goal setting, as this project really highlighted that I run into difficulty publishing work I feel is unfinished or a failure. This is especially foolish in this case, as not publishing would rather unnecessarily limit my learning and therefore go against this project and many others’ motivation and overall philosophy.
+No way! Well, sort of. It doesn’t entirely feel like it to me. While I did make accomplishments relevant to, in support of, and as a part of this project that were not set as goals, my product does not function and this project is very much still incomplete to me. That said, because the goals were, somewhat intentionally, not defined to demand a functional product, they were met. I think this is a good thing though, because my definition of meeting goals or a successful project is warped to require the content of the project being successful itself, when that’s not always the case; I have learned that I should take extra care with goal setting, as this project really highlighted that I run into difficulty publishing work I feel is unfinished or a failure. This is especially foolish in this case, as not publishing would rather unnecessarily limit my learning and therefore go against this project and many others’ motivation and overall philosophy.
 
-However, regardless of the technicality of whether the goals were met on paper, I would be remiss if all I used this reflection and analysis for was a simple “yes” or “no” for whether the goals were met on paper because, while this project was not successful in creating a motor, it was very much successful in being a learning experience.
+However, regardless of the technicality of whether the goals were met on paper, I would be remiss if all I used this reflection and analysis for was a simple " yes"  or " no"  for whether the goals were met on paper because, while this project was not successful in creating a motor, it was very much successful in being a learning experience.
 
+With this in mind, what I think are important to reflect on are the research question, the Kaplan objectives, and what I learned. But, first, let’s look at how the *original* goals were met on paper:
+
+- [ ] Design & create an electronic speed controller for an electric motor
+- [x] Design & build an electric motor from scratch for the DIY ESC
+- [ ] Program the DIY ESC to control the motor
+- [x] To learn, which should be evidenced through a blog post meeting the following:
+	- [x] Documents the project and its process with text, code, designs, explanations of code and of designs, pictures, videos, other graphics (e.g., animations), captions, and textual explanations
+	- [x] Is a minimum of a 4-8 minute read
+	- [x] Is neatly structured (or, at least, organized)
+	- [x] Contains a reflection section
+	- (Optionally contains) a short preview/summary video up to around 1 minute in length
+- [x] Create a presentation display for the motor
+
+So, it’s clear I learned and the blog post is quite complete, but the first couple goals are iffy. A goal that the motor or other products had to be *working* was never set; however, this is splitting hairs and silly nitpicking which misses the much more important fact that my goals changed as I was going about the project.
+
+I did initially intend to have a working motor and ESC, however, I did not plan for it in goal form because my overarching philosophy was that:
+
+- [x] ***It is better to dive deeply into a single something than shallowly into several somethings***
+
+Not having functionality be baked into my goals gave me much-needed room for flexibility.
+
+This is perhaps most notable when I ran into complications with the H-bridges. Given that the off-the-shelf ones simply did not work at the power levels they advertised, I had to change plans. It happens that making my own was more in line with this overarching goal of learning anyway with my discovering just how complicated just the H-bridges were. Unfortunately, I learned a lot, prototyped one, but could not finish building the three my design required (or even a fourth/just one to use in a display).
+
+Even still, I did try to make a working product before I finished one such as not winding all the coils or only making a half of the stator shell.
+
+### Next Steps
+
+#### Part 1: Finishing the Project
+
+I say " Finishing the Project,"  but really that is finishing *this* project, which is still just a prototype. That said, here’s what I believe is involved given the current state of things:
+
+- Finish current electronics
+	- Get H-bridges soldered on protoboard
+	- Mount Hall effects on motor
+	- Connect Hall effects to stator " hub"  protoboard
+- Program phases based on Hall effect input
+- Wrap 1 or 4 more coils to have either 2 or the desired 3 per phase
+
+- Finalize presentation board
+	- Mount electronics
+		- Connect things (power rails, etc.)
+	- Magnet flipper demo
+	- Peripherals
+		- LEDs next to each H-bridge for which phase they’re in
+		- LCD display with information (RPM, current draw, voltage)
+			- (optional) (pin-eating) 7 segment RPM meter
+		- LED ring showing magnet positions
+		- (optional) use a TFT to show 3 scrolling sine waves for the phases
+		- (optional) connect with website (Spin CAD model, display information other peripherals have (RPM, current draw, phase sine waves, graphic magnet position view, graphic of the electromagnets on the stator colored by their current phase, regen enabled, etc.))
+
+#### Part 2: Extensions & Future Projects
+
+While this seems like the smallest or simplest of the three parts, it very well could be the hardest. I can’t really say because it is mostly electronics, which I still don’t know much about, and certainly not enough to make accurate predictions of time or scope because I can’t imagine what the product may look like.
+
+- Regenerative braking
+- Optimize ESC to minimize switch time (eliminate need for heat sinks)
+- Optimize coil design
+
+Optimizing the coil design is going to be notably difficult. This is simply because it is the hardest thing for me to iterate upon, as coils pretty much need to be rewrapped and made permanent. This is not damning in its own right—I need to reprint an entire new rotor every time I modify the design, for example—but copper is expensive and wrapping takes a lot of time during which I need to be active.
+
+#### Part 3: Making it Professional
+
+This project was in support of a greater project of making an electric scooter from scratch. So, eventually, its product needs to be a motor and ESC which are usable in that case. That will pretty much involve remaking the entire motor (the " Final Draft,"  if you will), so whatever the current one is at the point of starting to make this final draft can be kept for the presentation board.
+
+- " Package"  motor
+	- Reprint everything in ASA
+	- Redesign stator
+		- Design & make other stator half
+		- Give coils cores
+			- Make new coils
+	- Make PCB for the internals of the stator and Hall Effect sensors
+	- Cable management solution (e.g., hollow axle)
+	- Make 2<sup>nd</sup> rotor (even if it doesn’t have magnets)
+	- Design and make " fat"  rotor band to enclose motor and connect two rotor halves (basically make proper motor housing)
+- " Package"  ESC
+	- Make PCB for ESC
+	- Make housing/package
+- Test motor & its limits
 ### Kaplan Objectives
 
 #### Change Over Time
 *What was it like in the past, the present & what might it be like in the future?*
 
+Saying just " yes,"  while apt, is perhaps too succinct.
+
+Especially in this reflection, and in particular the previous Next Steps section, I thoroughly examined what the project might look like in the future based on its current state, which I summarized throughout the rest of the blog.
+
+Throughout the rest of this blog, I showed literal change over time by documenting my process and creation steps.
+
 #### Details
 *Who..? What..? When..? Where..? Why..? How..?*
 
-### Next Steps
+Again, I think that saying just " yes"  here would be apt but perhaps too succinct. This one is also a bit more nuanced than just that.
 
-Finish current electronics
-Get H-bridges soldered on protoboard
-Wrap 1 or 4 more coils to have either 2 or 3 per phase
-Do regeneration
-“Package” motor (possibly redesign stator, make other half of stator, make proper housing with a second rotor (even if it doesn’t have magnets), hollow axle, get PCBs made for all electronics (especially Hall effect), reprint everything in ASA, etc.)
-Finalize presentation board with peripherals (RPM meter, amps, etc.)
-Run tests with motor
+I initially planned for this Kaplan Objective to be demonstrated in the tests that I was expecting to perform on the motor (such as rated voltage/current, RPM, torque, etc.), but, given that my motor was nonfunctional and incomplete, I could not perform such tests.
+
+Despite this, I believe that this Kaplan Objective was still demonstrated through the copious examination of various aspects of this project. In the research, I answered many questions through explanations (for example, the " Why"  of the MOSFETs’ drain being connected to their metal backing was proposed). In my motor itself, I discussed a great deal of the " whats, wheres, whys, and hows"  of my motors design.
 
 ## Bibliography
 

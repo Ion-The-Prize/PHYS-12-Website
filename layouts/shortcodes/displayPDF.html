@@ -1,0 +1,11 @@
+{{- $responsive := false -}}
+{{- $ratio := "17by22" -}}
+{{- $size := "75" -}}
+{{- $media_source := (.Get 0) -}}
+
+<div class="embed-responsive
+    {{- printf " embed-responsive-%s" $ratio -}}
+    {{- printf " h-%s w-%s" $size $size -}}
+    ">
+    <iframe class="embed-responsive-item" src="{{ $media_source }}" allowfullscreen></iframe>
+</div>

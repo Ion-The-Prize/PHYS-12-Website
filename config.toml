@@ -1,6 +1,7 @@
 # Site settings
 baseurl = "/"
 languageCode = "en-us"
+name = "Ion The Prize"
 title = "Ion The Prize"
 theme = "syna"
 enableGitInfo = true
@@ -15,8 +16,8 @@ disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
   home = ["HTML", "JSON"]
 
 [frontmatter]
-date = ["date", "lastmod"]
-lastmod = ["lastmod", ":git", "date"]
+  date = ["date", "lastmod"]
+  lastmod = ["lastmod", ":git", "date"]
 
 [markup]
   [markup.goldmark]
