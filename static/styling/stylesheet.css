@@ -19,3 +19,28 @@ blockquote {
 #lightTitle {
 	font-weight: 350;
 }
+
+.inline-svg {
+	display: inline-block;
+	height: 1rem;
+	width: 1rem;
+	top: -.125rem;
+	position: relative;
+}
+
+table {
+margin: 1rem;
+}
+
+/* tags have ugly padding at start of blog posts */
+.content-info {
+padding-left: 0px !important;
+}
+
+.content-sidebar {
+padding-left: 15px !important;
+}
+
+.col-md-9 {
+	padding-right: 30px !important;
+}

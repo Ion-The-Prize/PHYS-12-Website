@@ -175,6 +175,27 @@ My general philosophy when designing the motor itself was to make it as modular 
 
 The motor is made up of two main systems: the rotor which rotates and the stator which is stationary. These, of course, have their own niches, purposes, and subsystems in turn (see what I did there) and there are other parts, but the rotor and stator are the main ones and their high-level job is to simply rotate or not rotate.
 
+#### Approach
+
+I went about the MCAD in a bit of a one-at-a-time fashion. I knew what magnets I had and what diameter shaft I was going to use, so I started with a very rough sketch of the electro- and permanent magnets to get their positions and angles roughed out with these requirements:
+
+<center>
+
+| ![A VERY rough sketch indeed](<./Documentation Graphics/Motor Sketch.svg>) |
+|:--------------------------------------------:|
+
+</center>
+
+From there, I started putting parameters in a spreadsheet so I could link all my models because of how helpful that is and in case something changed later. I started with the rotor, then went onto the stator, assembled both, and finally designed the coils.
+
+Here are all of the parameters that the motor used, listed more or less in the order I added them:
+
+<details><summary>Motor Global Parameters</summary>
+
+<iframe src="./Documentation Graphics/Designs/Motor Global Parameters.html" width="100%" height="720px" style="border: none; max-width: 1080px;"></iframe>
+
+</details>
+
 #### [Vitamins](https://reprap.org/wiki/Category:Vitamin)
 
 Some parts of a motor cannot be 3D printed (the shaft, bearings, fasteners, wires, shaft collars, magnets, sensors, etc.) but are still planned for and included in the design. It is important to do this for many reasons, including but not limited to: aiding with assembly, ensuring that the correct size vitamins can be purchased, planning for vitamins already owned, and effectively planning the layout. The last of these—effectively planning the layout—is especially important for this motor as size is constrained. For the motor to be as efficient as possible, the coils need to sit as close to the permanent magnets as possible. So, the bottom of the stator needs to be completely flush to accommodate this. This requirement necessitates a lot of countersinking (among other things) and was always something to consider while I was designing the motor.
@@ -206,7 +227,7 @@ Image of the bolt (or, even better, a .gif of it rotating with detail and withou
 > Sometimes you want to make a pretty presentation. Sometimes you have 254 bolts and you don’t want to make s’mores with your computer. With the click of a button (multiple buttons), this one bolt model can accommodate both of these desires by turning on/off modeled threads (extra geometry as opposed to an image of threads), any knurling, and modeled threads.
 
  - Places itself where it’s needed in assemblies all in one move with iMates 
-> When you’re designing a part, you can’t put other parts in it, that’s what assemblies are for. This is sometimes inconvenient because you may forget that a bolt goes somewhere and you’d like to be able to indicate that in your part in a way that the program understands. Or if you just want to add the bolt and put it where it’s meant to go in one move as you drop it in instead of adding each bolt to the assembly and then telling each one, individually, where it’s meant to go, which is *very* convenient if you have several bolts. This is where iMates come in. The bolt has one half of the constraints that would be necessary to place it where it’s meant to go on a different part (its centerline and its bearing face). When you’re designing another part that’s meant to have a bolt, you can put the other half of the constraints in (basically, " this surface will touch an M5 bolt’s bearing surface"  and/or " this line will be an M5 bolt’s centerline" ). If this is done, when a bolt is dropped into the assembly, it’ll go in the correct place(s). Alternatively, these half constraints can be used to add and place a bolt into an assembly in one motion, just add bolt to assembly, click where it’s meant to go, move onto next bolt, as easy as 123..
+> When you’re designing a part, you can’t put other parts in it, that’s what assemblies are for. This is sometimes inconvenient because you may forget that a bolt goes somewhere and you’d like to be able to indicate that in your part in a way that the program understands. Or if you just want to add the bolt and put it where it’s meant to go in one move as you drop it in instead of adding each bolt to the assembly and then telling each one, individually, where it’s meant to go, which is *very* convenient if you have several bolts. This is where iMates come in. The bolt has one half of the constraints that would be necessary to place it where it’s meant to go on a different part (its centerline and its bearing face). When you’re designing another part that’s meant to have a bolt, you can put the other half of the constraints in (basically, "this surface will touch an M5 bolt’s bearing surface" and/or "this line will be an M5 bolt’s centerline" ). If this is done, when a bolt is dropped into the assembly, it’ll go in the correct place(s). Alternatively, these half constraints can be used to add and place a bolt into an assembly in one motion, just add bolt to assembly, click where it’s meant to go, move onto next bolt, as easy as 123..
 
  - (Coming Soon) Imperial sizes
 > It is just a metric bolt right now, but SAE/imperial sizes are super easy to implement. I am still undecided on whether I want SAE and metric in one bolt. On the one hand, having changes made to one be applied to the other is really appealing. But, on the other hand, it’s likely that projects will be either entirely imperial or entirely metric and not a mix, so it would be kind of pointless to have just one bolt for both purposes. In all likelihood, I’ll put both sizes in one bolt file until I can find some way to keep my changes synced between two separate files, at which point I’ll go with that. 
@@ -244,26 +265,79 @@ For what the motor needs (not the ESC), there are a couple vitamins of particula
 - Shaft collar
 Bearings
 - Permanent magnets
-- " Drive magnets"  - magnets whose magnetic fields will be used to spin the rotor
-- " Halbach magnets"  - magnets whose magnetic fields will be used to concentrate the magnetic fields of the drive magnets in a [Halbach array](https://en.wikipedia.org/wiki/Halbach_array) (basically black magic)
-- " Sensor magnets"  - small magnets offset from the drive magnets and which have the same polarity so as to be read by the Hall effect sensors
 - Bolts
 - Hex Nuts
 - (optional) Square nuts
 - Shaft
 - Copper wire
 
-I know I just listed a good bit but other than this, it’s all 3D printed. Well, part of the coils is laser cut acrylic, but it’s designed to be 3D printed. There is not really anything all that exceptional regarding the modeling or design of these parts themselves (other than the Everybolt & Everynut)... they just sort of are modeled to match the real thing without creativity.
+I know I just listed a good bit but other than this, it’s all 3D printed. Well, part of the coils is laser cut acrylic, but it’s designed to be 3D printed. There is not really anything all that exceptional regarding the modeling or design of these parts themselves (other than the Everybolt & Everynut)... they’re just sort of modeled to match the real thing without creativity.
 
 #### Rotor
 
+{{< newTabSVG src="./Documentation Graphics/Designs/Rotor/Motor Exploded Drawing - Highlighted - Rotor.svg" >}}
+
 ##### The Rotor’s Jobs & Purposes
 
-Rotate!
-Hold permanent magnets
-Have an interface that wheel/spokes can attach to
+Simply put, the rotor rotates. It must have some sort of way of interfacing with the outside world (e.g., a wheel) so that this rotation can be useful. To be able to rotate, it must be capable of free spinning and of holding permanent magnets so it can be controlled by the stator.
+
+##### Magnets
+
+I’m going to talk about the magnets before I talk about the body because the body’s design was largely informed by the restrictions set by the magnets.
+
+As has been stated before, I categorize the magnets into three types of magnets: drive, halbach, and sensor. They all have different sizes and jobs.
+
+In the CAD drawing, it looks like every magnet is doubled up. This is because I colored each one with a north and south pole and, to get the sides to have multiple colors, I needed a groove at the split (otherwise Inventor would merge the face). That said, the Halbach and Drive magnets are each in stacks of two for added strength.
+
+###### Drive Magnets
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Rotor/Motor Exploded Drawing - Highlighted - Drive Magnets.svg" >}}
+
+The "Drive magnets" are large and strong magnets whose magnetic fields will be used to spin the rotor. I would rather the drive magnets be wedge shaped, but I did not have any at the time.
+
+To make up for the strength I might be losing because of the drive magnets’ rectangular shape, I added in "Halbach magnets:"
+
+###### Halbach Magnets
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Rotor/Motor Exploded Drawing - Highlighted - Halbach Magnets.svg" >}}
+
+These are slightly smaller magnets whose magnetic fields are used to concentrate the drive magnets’ magnetic fields in a [Halbach array](https://en.wikipedia.org/wiki/Halbach_array) (which is basically black magic, but it works).
+
+The Halbach array not only focuses the magnet field, but also makes the Halbach magnets really want to shoot out.
+
+###### Sensor Magnets
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Rotor/Motor Exploded Drawing - Highlighted - Sensor Magnets.svg" >}}
+
+The last type of magnets are "Sensor magnets." These are very small magnets which are "paired" with the drive magnets—each one matches the angle and polarity as a drive magnet but is closer to the shaft. Their purpose is to be read by the Hall effect sensors. On the stator, the electromagnets need to be above the drive magnets. This means there is no room for a Hall effect sensor. Even if there was, it would probably just read whatever the electromagnet is set to, which tells me nothing. So, set in the empty space closer to the shaft, these sensor magnets will let me know where the drive magnets are without my actually having to read the drive magnets.
+
+##### Rotor Body
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Rotor/Motor Exploded Drawing - Highlighted - Rotor Body.svg" >}}
+
+The body of the rotor is almost entirely based on a single sketch which is shared by several features:
+
+<center>
+
+| ![]() | ![]() |
+| :---: | :---: |
+| Sketch1’s relationships | Sketch1 itself |
+
+</center>
+
+What I was talking about with the sensor magnets earlier might make more sense with the polarity colored:
+
+The drive magnets slot into the top along with the sensor magnets.
+
+##### Rotor Band
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Rotor/Motor Exploded Drawing - Highlighted - Rotor Band.svg" >}}
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Rotor/Motor Exploded Drawing - Highlighted - Rotor Band Fasteners.svg" >}}
 
 #### Stator
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Stator/Motor Exploded Drawing - Highlighted - Stator.svg" >}}
 
 ##### The Stator’s Jobs & Purposes
 
@@ -273,15 +347,17 @@ Hold electromagnets & electronics
 
 ##### Coils
 
+{{< newTabSVG src="./Documentation Graphics/Designs/Stator/Motor Exploded Drawing - Highlighted - Coils.svg" >}}
+
 ###### Cores: Iron vs Air
 
 If you wrap copper wire around something and apply current, you get a magnet. If you wrap copper wire around a nail and apply current, you get a better magnet. To understand why this is, one should first have somewhat of an understanding of how magnets work.
 
-Just like how copper is more electrically conductive than air, iron is more " magnetically conductive"  than air (" conductivity"  for magnets is called magnetic permeability).
+Just like how copper is more electrically conductive than air, iron is more "magnetically conductive" than air ("conductivity" for magnets is called magnetic permeability).
 
-A magnet’s magnetic field is the space around the magnet that experiences a magnetic force. This field could be thought of as a cloud of a bunch of lines that loop from one pole of the magnet to the other and passing through the magnet’s center by necessity. However, while many of these loops remain relatively close to the magnet, some go very, *very* far away. Because the " field lines"  that go so far away are less numerous than the ones that are close to the magnet, the strength of the magnet is dependent on distance—closer is stronger because the magnetic field is denser and farther is weaker because the magnet field is less dense. These same rules apply for electromagnets; after all, electromagnets are basically just generators of magnetic fields you can turn on or off. (" Generators of magnetic fields"  is just a long-winded way of saying permanent magnets.)
+A magnet’s magnetic field is the space around the magnet that experiences a magnetic force. This field could be thought of as a cloud of a bunch of lines that loop from one pole of the magnet to the other and passing through the magnet’s center by necessity. However, while many of these loops remain relatively close to the magnet, some go very, *very* far away. Because the "field lines" that go so far away are less numerous than the ones that are close to the magnet, the strength of the magnet is dependent on distance—closer is stronger because the magnetic field is denser and farther is weaker because the magnet field is less dense. These same rules apply for electromagnets; after all, electromagnets are basically just generators of magnetic fields you can turn on or off. ("Generators of magnetic fields" is just a long-winded way of saying permanent magnets.)
 
-Just like how conductivity is useful because it can be used to control where electricity goes, magnetic permeability is useful because it can be used to control where magnetic field lines go—just like how electricity follows the path of least resistance and would therefore " rather"  flow through copper than the air, so too do magnetic fields who would " rather"  flow through iron than the air, should each of electricity and magnetic fields’ respective options be available.
+Just like how conductivity is useful because it can be used to control where electricity goes, magnetic permeability is useful because it can be used to control where magnetic field lines go—just like how electricity follows the path of least resistance and would therefore "rather" flow through copper than the air, so too do magnetic fields who would "rather" flow through iron than the air, should each of electricity and magnetic fields’ respective options be available.
 
 These ideas—of a dense magnetic field being strong, iron controlling where magnetic fields tend to, and the magnetic field of a magnet necessarily traveling through the magnet’s center—can be combined to create more powerful electromagnets. By placing iron at the core of an electromagnet, the magnetic field will want to be there more and it will also want to generally stay close to the electromagnet more so that the distance it has to travel to return to the center is as small as possible because traveling a short distance takes less energy than traveling a large distance. This has the effect of making the magnetic field denser closer to the electromagnet and less dense farther from the electromagnet.
 
@@ -289,19 +365,31 @@ These ideas—of a dense magnetic field being strong, iron controlling where mag
 
 Nitpicking unimportant to the explanation:
 
-It should be noted that the magnetic permeability of the iron does not, on its own, alter the " number of magnetic field lines"  and therefore the total strength of of the electromagnet; all the magnetic permeability of the iron does is alter where the magnetic field tends to be and therefore make the magnet stronger closer to the electromagnet but also weaker farther away from the electromagnet; however, because we only care about the strength close to the electromagnet, we simplify this by saying that an iron core makes the electromagnets stronger.
+It should be noted that the magnetic permeability of the iron does not, on its own, alter the "number of magnetic field lines" and therefore the total strength of of the electromagnet; all the magnetic permeability of the iron does is alter where the magnetic field tends to be and therefore make the magnet stronger closer to the electromagnet but also weaker farther away from the electromagnet; however, because we only care about the strength close to the electromagnet, we simplify this by saying that an iron core makes the electromagnets stronger.
 
 Nitpicking even less important to the explanation:
 
-Also technically, an electromagnet with an iron core is stronger than an electromagnet without an iron core but which is otherwise equal. This is because the electromagnet induces a magnetic field in the iron (or, more accurately, aligns the magnetic fields of the iron to give it a nonzero net magnetic field in line with the magnetic field of the electromagnet) which " adds to the total number of magnetic field lines"  and this effect alone is akin to adding a permanent magnet core; however, while the strength of the combination of the magnetic fields of the electromagnet and effective permanent magnet is greater, the strength of the magnetic field of *just the electromagnet* is unaffected by the addition of the effective permanent magnet. But to call the main statement of the explanation incorrect for this reason would be extremely nitpicky (perhaps as evidenced by the fact that I needed to carefully word the first sentence of this paragraph for this point to be technically true).
+Also technically, an electromagnet with an iron core is stronger than an electromagnet without an iron core but which is otherwise equal. This is because the electromagnet induces a magnetic field in the iron (or, more accurately, aligns the magnetic fields of the iron to give it a nonzero net magnetic field in line with the magnetic field of the electromagnet) which "adds to the total number of magnetic field lines" and this effect alone is akin to adding a permanent magnet core; however, while the strength of the combination of the magnetic fields of the electromagnet and effective permanent magnet is greater, the strength of the magnetic field of *just the electromagnet* is unaffected by the addition of the effective permanent magnet. But to call the main statement of the explanation incorrect for this reason would be extremely nitpicky (perhaps as evidenced by the fact that I needed to carefully word the first sentence of this paragraph for this point to be technically true).
 
-###### Motivation: Why coils aren’t just " bare" ?
+###### Motivation: Why coils aren’t just "bare"?
 
 Many axial flux motors I see don’t have a spool still attached to the coils.[^Gieras] Instead, the wire is glued or otherwise fused together to maintain its shape and these bare coils themselves are affixed to a frame (the stator). This—the having of coils independent of and without individual spools—is for good reason, too, as magnetic strength falls off not with the inverse square of distance but with the inverse cube of the distance which means that even a small separation can have a pretty major effect on efficiency; therefore, the permanent magnets can be made to sit much closer to the coils by not having spools but instead bare coils; however, as my motor was designed to be a good, easily modifiable prototype with an emphasis on modularity, gluing coils to the stator seemed counter to that to me.
 
-This consideration culminated in the question of " how can I make the spools swappable while sacrificing as little efficiency as possible?"  as I was designing the motor. I settled on 2mm thick spools attached to the stator with bolts. And the stator would have " arms"  in each of the coils’ acceptor spots that the bolts could sit in, and the coils’ spools would have negatives of those arms " cut"  into them so they can be as flush with the " bottom"  of the stator and therefore as close to the permanent magnets as possible.
+This consideration culminated in the question of "how can I make the spools swappable while sacrificing as little efficiency as possible?" as I was designing the motor. I settled on 2mm thick spools attached to the stator with bolts. And the stator would have "arms" in each of the coils’ acceptor spots that the bolts could sit in, and the coils’ spools would have negatives of those arms "cut" into them so they can be as flush with the "bottom" of the stator and therefore as close to the permanent magnets as possible.
 
 ###### The Actual Coil Design
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Stator/Coils/Motor Exploded Drawing - Highlighted - Coil Bolts.svg" >}}
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Stator/Coils/Motor Exploded Drawing - Highlighted - Coil Exploded.svg" >}}
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Stator/Coils/Motor Exploded Drawing - Highlighted - Coil Main Body.svg" >}}
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Stator/Coils/Motor Exploded Drawing - Highlighted - Coil Windings.svg" >}}
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Stator/Coils/Motor Exploded Drawing - Highlighted - Coil Core.svg" >}}
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Stator/Coils/Motor Exploded Drawing - Highlighted - Coil Lid.svg" >}}
 
 119 turns of 20 gauge wire
 
@@ -312,7 +400,13 @@ ASA especially useful here because they get the hottest out of any part of the m
 Warping of ASA
 
 
-As I did not have access to either casting or iron filament my initial plan was to just use air cores. but was unable to tighten the bolts holding the spools in because the stator spider’s plastic was too weak. I did what I could in CAD with fillets and such without sacrificing coil volume, but that meant only horizontal fillets which didn’t do much against the vertical force of the bolt. I’m new to stress analyses and so did not optimize the design procedurally based off of one, but I did make a [stress analysis report](./Documentation Graphics/StatorBody.ipt Stress Analysis Report 10_31_2022.html) to document it.
+As I did not have access to either casting or iron filament my initial plan was to just use air cores. but was unable to tighten the bolts holding the spools in because the stator spider’s plastic was too weak. I did what I could in CAD with fillets and such without sacrificing coil volume, but that meant only horizontal fillets which didn’t do much against the vertical force of the bolt. I’m new to stress analyses and so did not optimize the design procedurally based off of one, but I did make a stress analysis report to document it:
+
+<details><summary>Stator Spider Stress Analysis</summary>
+
+<iframe src="./Documentation Graphics/StatorBody.ipt Stress Analysis Report 10_31_2022.html" width="100%" height="720px" style="border: none; max-width: 1080px;"></iframe>
+
+</details>
 
 As a perhaps next-best option, I made some plastic cores to act as standoffs. These were not only good for protecting the stator spider and holding the coils down, but were also great prototyping for the design of iron cores that I’ll later use as these had to go through a couple revisions before working nicely:
 image of real life revisions first to add an indent for the stator spider and then to chamfer the top face because the glue holding the coil 
@@ -321,7 +415,35 @@ Kinda hard to wrap evenly
 Would like to model grooves into spools to get a good start
 Would like to make the height based on wire gauge as well so that the bolts holding coils in can be flush with top rotor
 Would like to use heat-set inserts on coil lids instead of nuts so that it can be flush with  top rotor
-Is this the best number of turns and wire gauge? What about n-stranded wire of a thinner gauge? Who knows! That’s why I want to do some simple research about this
+Is this the best number of turns and wire gauge? What about n-stranded wire of a thinner gauge? Who knows! That’s why I want to look into this and run some tests
+
+3D printing the lids would enable a slight bumpout in the center so the trapped nut/threaded insert could have some tolerance (and the bolt wouldn’t need a precise length)
+
+##### Stator Body
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Stator/Motor Exploded Drawing - Highlighted - Stator Body.svg" >}}
+
+Countersinking everywhere
+Like the rotor, almost everything was based off a single sketch image of sketch
+
+###### Flange Coupling
+
+{{< newTabSVG src="./Documentation Graphics/Designs/Stator/Motor Exploded Drawing - Highlighted - Flange Coupling.svg" >}}
+
+Thing used M4 bolts which have massive heads (and similarly massive nuts) so I needed to countersink this thing a ton
+
+###### Stator Spider
+
+
+
+Looks like a spider web
+Bumpount “island” is for a bolt for the coils. Needs a bumpout because the bolt needs countersinking.
+Lag between designing and printing and discovering issues. Would sometimes discover an issue in the design halfway through a print, would sometimes discover an issue only when using the print, the worst were those that I discovered after I had wrapped a coil. (start of coil wrapping made channel not as thick, so I made the stator spider thinner to compensate)
+As you saw in the coil design, these are quite flimsy. So, I wanted to fillet everything for strength. Didn’t fillet the coils though!
+
+###### Circuit Board Acceptor
+
+Over-engineered hall-effect sensor indents… really they should just be poking through the stator. I don’t know how I’d mount it… glue’s always a viable option. Could also probably make some arms to hold it from the top. Oh yeah, I could just put standoffs on the circuitboard and hold it from the back or the “roof”
 
 ##### Reflecting on the Stator’s Design
 
@@ -329,7 +451,7 @@ Why do I have a reflection section outside of my reflection section? Well, it’
 
 Knowing what I now know about CAD, I’d like to make both the coils and their acceptor locations in the stator adaptive and based on common sketches. 
 
-The coils should also be an assembly full of adaptive parts (core, spool, wire, spool’s " lid" ) instead of a part with multiple components (because components are a surprisingly limiting feature and I don’t quite understand them).
+The coils should also be an assembly full of adaptive parts (core, spool, wire, spool’s "lid" ) instead of a part with multiple components (because components are a surprisingly limiting feature and I don’t quite understand them).
 
 I tried to do both of these things when designing them initially, but didn’t know how and gave up pretty quickly. Redesigning/refactoring this does sound fun, which is a surprise to me given how much I normally dislike it. Maybe I just like standardization more than I dislike doing the same thing twice.
 
@@ -339,13 +461,19 @@ So, I’m coming back to this section a couple weeks after writing it and also h
 
 I threw this chart of these dependencies together in Lucidchart:
 
+<center>
+
 | ![404 Alt Text Not Found. What, you try making an informative alt text for a flowchart, it’s not easy](<./Documentation Graphics/Designs/Stator/New Stator Design Idea Dependency Diagram.png>) |
 |:--------------------------------------------:|
 |               	Pink = parent derived part ; Light blue = part ; Blue = subassembly ; Orange = assembly             	|
 
-And grey is other, various parts like nuts and electronics and, yes, of course, the ***EVERYBOLT***.
+</center>
+
+And grey is other, various parts like nuts, electronics and, yes, of course, the ***EVERYBOLT***.
 
 -------
+
+
 
 ## Electronics
 
@@ -382,9 +510,13 @@ An H-bridge is a circuit that allows a voltage to be applied across a load in ei
 
 To control the direction of a motor, an H-bridge uses four switches (in this case, MOSFETs) arranged in a "bridge" configuration so current can flow through the load in either direction depending on how the switches are activated.
 
+<center>
+
 |	![Cyril B’s graphic for the structure of an H-bridge](https://upload.wikimedia.org/wikipedia/commons/d/d4/H_bridge.svg)	|
-|	:--:	|
-|	It is called an H-bridge because it is shaped like the letter "H," with the load at the center of the H and the voltage source at each end.	|
+|	:----:	|
+|	It is called an H-bridge because it is shaped like the letter "H," </br> with the load at the center of the H and the voltage source at each end.	|
+
+</center>
 
 The speed of the motor can be controlled by adjusting the duty cycle of the switching signals applied to the H-bridge. If the switches are activated and deactivated at a high frequency, the motor will rotate faster; if the switches are activated and deactivated at a lower frequency, the motor will rotate slower.
 
@@ -480,14 +612,14 @@ That said, I definitely did ride this high and overestimate my understanding of 
 
 So great was my overestimation in my ability and understanding that in my next attempt at the circuit, I made it compact. So compact, in fact, that I see now in hindsight that it actually had a function I was unaware of at the time and which it performs surprisingly well; that is, it acts as a display of my then-gross overconfidence.
 
-|	![The second draft of my H-bridge circuit](<./Documentation Graphics/Electronics/H-bridges/V1 Dense Breadboard Angle Top.jpeg>)	|
-|	:--:	|
-|	A monument to my hubris: the second draft of my H-bridge circuit using IRLZ34N MOSFETs on a breadboard which I wired up *moderately densely*.	|
+<center>
 
-| ![Another angle of the 2nd attempt at an H-bridge](<./Documentation Graphics/Electronics/H-bridges/V1 Dense Breadboard Angle Top2.jpeg>) |
-|:-----------------------------------:|
+|	![The second draft of my H-bridge circuit](<./Documentation Graphics/Electronics/H-bridges/V1 Dense Breadboard Angle Top.jpeg>)	| ![Another angle of the 2nd attempt at an H-bridge](<./Documentation Graphics/Electronics/H-bridges/V1 Dense Breadboard Angle Top2.jpeg>) |
+|	:--:	| :----: |
 
+A monument to my hubris: the second draft of my H-bridge circuit using IRLZ34N MOSFETs on a breadboard which I wired up *moderately densely*.
 
+</center>
 
 So yeah, big mistake. I was thinking about 3 things when deciding to go down this route:
 1. Doubt—because I'm going to be making it into a protoboard anyway, it's also going to become small and compact anyway no matter what I do therefore there’s no reason to not make it big now
@@ -506,13 +638,17 @@ That last one is really important for compact circuits on breadboards because de
 
 Interestingly, the dense circuit did actually cycle the voltage like it was meant to, just no where near as much as it should have:
 
-| {{< video src="./Documentation Graphics/Electronics/H-bridges/V1 Dense Breadboard Voltage Fluctuation Too Small.mp4" type="video/mp4" >}} |
+<center>
+
+| {{< video src="./Documentation Graphics/Electronics/H-bridges/V1 Dense Breadboard Voltage Fluctuation Too Small.mp4" type="video/mp4" width="80%" >}} |
 |:---------------------------------------------------------------------:|
 |                            Using a multimeter on the compact H-bridge circuit revealing its voltage switching performance.                         	|
 
-| {{< video type="video/mp4" src="./Documentation Graphics/Electronics/H-bridges/V1 Manually Switching MOSFET.mp4" >}} |
+| {{< video type="video/mp4" src="./Documentation Graphics/Electronics/H-bridges/V1 Manually Switching MOSFET.mp4" width="75%" >}} |
 |:---------------------------------------------------------------------:|
 |                            The voltage across a MOSFET when I manually connect its control pin to power and ground.                         	|
+
+</center>
 
 If I had to guess, I’d say the MOSFETs were being switched outside of the optimal pattern. Of course, I didn’t confirm this because it was not worth it to me to try to decipher my mess.
 
@@ -556,13 +692,13 @@ That’s what you like to see! I didn’t even have to debug anything because I 
 
 On the subject of readability, I thought it would be cool, especially for the display for the presentation, to put LED indicator lights directly connected to the gate on each MOSFET. This way, you could see the " X"  of where the final AC signal comes from. 
 
-| ![H-bridge breadboard circuit with LED indicator lights](<./Documentation Graphics/Electronics/H-bridges/V2 Spread Out Breadboard Progress 4 - LEDs.jpeg>) |
-|:---------------------------------------------------------------------:|
-|                            	Adding the lights…                           	|
+<center>
 
-| {{< video type="video/mp4" src="./Documentation Graphics/Electronics/H-bridges/V2 Spread Out Breadboard Progress 5 - LEDs Blinking.mp4" >}} |
-|:---------------------------------------------------------------------:|
-|                            	X marks the spot!                           	|
+| <img src="./Documentation Graphics/Electronics/H-bridges/V2 Spread Out Breadboard Progress 4 - LEDs.jpeg" alt="H-bridge breadboard circuit with LED indicator lights" width="75%"/> | {{< video type="video/mp4" src="./Documentation Graphics/Electronics/H-bridges/V2 Spread Out Breadboard Progress 5 - LEDs Blinking.mp4" width="100%" >}} |
+|----:|:---|
+|  Adding the lights…  |  X marks the spot!  |
+
+</center>
 
 The indicator LEDs really do help to show how the current is flowing through the output load.
 
@@ -591,7 +727,7 @@ There isn’t much to this circuit other than just hooking a MOSFET up to an osc
 |:-----------------------------------:|:-----------------------------------:|
 |           	Bird's eye view of the oscilloscope and test circuit           	|            	Closeup of the oscilloscope and test circuit                 	|
 
-| {{< video type="video/mp4" src="./Documentation Graphics/Electronics/H-bridges/MOSFET Tester Setup Controlled with Oscilloscope.mp4" >}} |
+| {{< video type="video/mp4" src="./Documentation Graphics/Electronics/H-bridges/MOSFET Tester Setup Controlled with Oscilloscope.mp4" width="80%" >}} |
 |:---------------------------------------------------------------------:|
 |                            	Controlling the MOSFET with the computer running the Analog Discovery 2 software. (I don’t know morse code.)                            	|
 
@@ -637,12 +773,18 @@ Now, what to do about the heat? Well, I have two large heat sinks with these guy
 
 ##### Major Iterations of H-Bridges
 
-| {{< video type="video/mp4" src="<./Documentation Graphics/Electronics/H-bridges/V4 Mounted on Heatsink - All Versions Compared.mp4" >}} |
-|:---------------------------------------------------------------------:|
-| ![Evolution of H-bridge iterations](<./Documentation Graphics/Electronics/H-bridges/V4 Mounted on Heatsink - All Versions Compared.jpeg>) |
-|                            	Evolution of H-bridge iterations                            	|
+<center>
+
+| {{< video type="video/mp4" src="./Documentation Graphics/Electronics/H-bridges/V4 Mounted on Heatsink - All Versions Compared.mp4" width="100%" >}} | ![Evolution of H-bridge iterations](<./Documentation Graphics/Electronics/H-bridges/V4 Mounted on Heatsink - All Versions Compared.jpeg>) |
+|:---------------------------------------------------------------------:|:-----:|
+|                            	                           	|                            	                           	|
+
+Evolution of H-bridge iterations</center>
+
 
 ##### H-Bridge Code
+
+<details><summary>BTS7960 Component Sketch</summary>
 
 ```arduino
 // BTS7960 arduino H-bridge motor driver sketch 
@@ -674,14 +816,10 @@ void loop() {
   analogWrite(R_PWM, 255);
   delay(500);
 
-  analogWrite(R_PWM, 128);
-  analogWrite(L_PWM, 0);
-  delay(1000); // Run the motor for 1 second
-
   // Stop the motor
   analogWrite(R_PWM, 0);
   analogWrite(L_PWM, 0);
-  delay(1000); // Pause for 1 second
+  delay(100); // Pause for 0.1 seconds
   
   // check for overcurrent
    if(digitalRead(R_IS)){
@@ -698,10 +836,13 @@ void loop() {
   analogWrite(L_PWM, 255);
   delay(500);
 ```
+</details>
+
+<details><summary>Homemade H-Bridges Sketch</summary>
+
+Because of the heat issues, I was worried about PWM-ing the power MOSFETs. Also, I can’t PWM both the power and ground at the same time because there’s no guarantee that the signals would line up (in fact, it would be quite unlikely). I also always made sure to actively close the MOSFETs when they weren’t in use, just in case.
 
 ```arduino
-// BTS7960 arduino h-bridge motor driver sketch 
-
 // pins
 // r and l are directions
 // these are all MOSFET gate pins
@@ -767,7 +908,10 @@ void loop() {
 }
 ```
 
-HallEffectTest
+</details>
+
+<details><summary>HallEffectTest</summary>
+
 ```arduino
 // pins
 const int S1Pin = A0;  // S1 analog input pin
@@ -793,7 +937,12 @@ void loop() {
 }
 ```
 
-Simple rotation (very work in progress, I just wanted something to work so I could code in the phases but ran into issues with the BTS7960s again)
+</details>
+
+<details><summary>Simple rotation</summary>
+
+VERY work in progress; I just wanted something to work so I could code the phases… it didn’t turn out that way of course because I couldn’t get the BTS7960s working once again.
+
 ```arduino
 // BTS7960 arduino h-bridge motor driver sketch 
 
@@ -867,6 +1016,9 @@ void loop() {
   delay(control_motor);
 }
 ```
+
+</details>
+
 #### A Brief Aside on the Importance of Resistors
 
 The resistors that connect to the MOSFETs’ gate input seemed kind of weird and unnecessary to me.

@@ -1,0 +1,105 @@
+<style type="text/css">
+	table.paramtable {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+		border: 1px solid #c8cbd0; 
+	} 
+	.paramtable td {
+		padding: 4px;
+		margin: 3px;
+        color: #212529;
+		border: 1px solid #c8cbd0;
+	}
+	.paramtable-firstrow th {
+		background-color: #F5007E; 
+		color: #f0fff0;
+		font-weight: bold;
+	}
+</style>
+<table class="paramtable">
+<thead><tr class="paramtable-firstrow"><th>name</th><th>equation</th><th>unit</th><th>comment</th></tr></thead><tbody>
+ <tr><td>gap</td><td>0.1 mm</td><td>mm</td><td>tightly fitting tolerance</td></tr>
+ <tr><td>airgap</td><td>0.4 mm</td><td>mm</td><td>loosely fitting tolerance (for parts that slide together)</td></tr>
+ <tr><td>wallgap</td><td>2 mm</td><td>mm</td><td>minimum wall thickness between two parts</td></tr>
+ <tr><td>printingLayerHeight</td><td>0.2 mm</td><td>mm</td><td>the layer height</td></tr>
+ <tr><td>driveMagnet_length</td><td>60 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>driveMagnet_width</td><td>10 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>driveMagnet_height</td><td>5 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>driveMagnet_numStacked</td><td>2 ul</td><td>ul</td><td>&nbsp;</td></tr>
+ <tr><td>halbachMagnet_length</td><td>60 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>halbachMagnet_width</td><td>10 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>halbachMagnet_height</td><td>3 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>halbachMagnet_numStacked</td><td>2 ul</td><td>ul</td><td>&nbsp;</td></tr>
+ <tr><td>rotorBandBolt_diameter</td><td>2 mm</td><td>mm</td><td>M2 bolt to attach rotor band to rotor (D measurement)</td></tr>
+ <tr><td>rotorBandBolt_headDiameter</td><td>3.98 mm</td><td>mm</td><td>M2 bolt to attach rotor band to rotor (dk measurement)</td></tr>
+ <tr><td>rotorBandBolt_headHeight</td><td>2 mm</td><td>mm</td><td>M2 bolt to attach rotor band to rotor (k measurement)</td></tr>
+ <tr><td>rotorBandBolt_shaftLength</td><td>20 mm</td><td>mm</td><td>M2 bolt to attach rotor band to rotor (l measurement)</td></tr>
+ <tr><td>rotorBandHexNut_sideToSide</td><td>4 mm</td><td>mm</td><td>M2 nut for bolt to attach rotor band to rotor (s measurement)</td></tr>
+ <tr><td>rotorBandHexNut_height</td><td>1.2 mm</td><td>mm</td><td>M2 nut for bolt to attach rotor band to rotor (m1 measurement)</td></tr>
+ <tr><td>rotorBandSquareNut_sideLength</td><td>4 mm</td><td>mm</td><td>M2 square nut for bolt to attach rotor band to rotor (s measurement)</td></tr>
+ <tr><td>rotorBandSquareNut_height</td><td>1.2 mm</td><td>mm</td><td>M2 square nut for bolt to attach rotor band to rotor (m measurement)</td></tr>
+ <tr><td>sensorMagnet_diameter</td><td>5 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>sensorMagnet_height</td><td>8 mm/3 ul</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>numMagnetSets</td><td>12 ul</td><td>ul</td><td>A set is a drive magnet stack, halbach magnet stack, and a sensor magnet. The number of "spokes" the motor has</td></tr>
+ <tr><td>numElectromagnets</td><td>9 ul</td><td>ul</td><td>&nbsp;</td></tr>
+ <tr><td>driveMagnet_centerSpacingRadius</td><td>((driveMagnet_width + 2 ul * gap) + ((halbachMagnet_numStacked * halbachMagnet_height) + 2 ul * gap) + (2 ul * wallgap)) * numMagnetSets / ( 2 * 3.14159265)</td><td>mm</td><td>Circumference created by halbach and drive magnets dividied by 2pi</td></tr>
+ <tr><td>sensorMagnet_ringRadius</td><td>(driveMagnet_centerSpacingRadius / 2) + 2 * wallgap</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>rotorRadius</td><td>driveMagnet_centerSpacingRadius + driveMagnet_length + (2 ul * gap) + (wallgap)</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>rotorThickness</td><td>driveMagnet_height * driveMagnet_numStacked + gap + 2 * wallgap</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>rotor_mountingLipHeight</td><td>statorThickness / 2</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>shaftDiameter</td><td>8 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeBearing_innerDiameter</td><td>shaftDiameter</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeBearing_outerDiameter</td><td>16 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeBearing_flangeDiameter</td><td>18 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeBearing_height</td><td>5 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeBearing_flangeHeight</td><td>1 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>magnetWire_gauge</td><td>20</td><td>ul</td><td>&nbsp;</td></tr>
+ <tr><td>magnetWire_outerDiameter</td><td>0.8128</td><td>mm</td><td>value looked up in table from AWG_LookupTable sheet in Excel</td></tr>
+ <tr><td>coilThickness</td><td>12 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>statorThickness</td><td>coilThickness + 2 * wallgap</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>rotorBandThickness</td><td>rotorBandBolt_headHeight + wallgap + gap</td><td>mm</td><td>band to go around rotor to hold halbach magnets in</td></tr>
+ <tr><td>shaftLength</td><td>200 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeCoupling_innerDiameter</td><td>shaftDiameter</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeCoupling_collarOuterDiameter</td><td>16 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeCoupling_flangeDiameter</td><td>32 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeCoupling_collarHeight</td><td>10 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeCoupling_flangeHeight</td><td>3.1 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeCoupling_height</td><td>flangeCoupling_collarHeight + flangeCoupling_flangeHeight</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeCoupling_mountHoleDiameter</td><td>3.9 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeCoupling_mountHoleEdgeToEdge</td><td>2.05 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>flangeCoupling_mountHoleCenterToCouplingCenter</td><td>12 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>statorRadius</td><td>driveMagnet_centerSpacingRadius + driveMagnet_length + (2 ul * gap)</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>statorMountBolt_diameter</td><td>4 mm</td><td>mm</td><td>M4 bolt to attach stator flange coupling to stator (D measurement)</td></tr>
+ <tr><td>statorMountBolt_headDiameter</td><td>7 mm</td><td>mm</td><td>M4 bolt to attach stator flange coupling to stator (dk measurement)</td></tr>
+ <tr><td>statorMountBolt_headHeight</td><td>4 mm</td><td>mm</td><td>M4 bolt to attach stator flange coupling to stator (k measurement)</td></tr>
+ <tr><td>statorMountBolt_shaftLength</td><td>flangeCoupling_flangeHeight + coilThickness + wallgap</td><td>mm</td><td>M4 bolt to attach stator flange coupling to stator (l measurement)</td></tr>
+ <tr><td>statorMountHexNut_sideToSide</td><td>8 mm</td><td>mm</td><td>M4 nut for bolt to attach stator flange coupling to stator (s measurement)</td></tr>
+ <tr><td>statorMountHexNut_height</td><td>4 mm</td><td>mm</td><td>M4 nut for bolt to attach stator flange coupling to stator (m1 measurement)</td></tr>
+ <tr><td>coil_percentCoverage</td><td>0.6 ul</td><td>ul</td><td>&nbsp;</td></tr>
+ <tr><td>statorSpokeDegrees</td><td>4 deg</td><td>deg</td><td>&nbsp;</td></tr>
+ <tr><td>coil_cornerRadius</td><td>10 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>coil_width</td><td>10 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>statorCoilBolt_diameter</td><td>2 mm</td><td>mm</td><td>M2 bolt for stator coils (D measurement)</td></tr>
+ <tr><td>statorCoilBolt_headDiameter</td><td>3.98 mm</td><td>mm</td><td>M2 bolt for stator coils (dk measurement)</td></tr>
+ <tr><td>statorCoilBolt_headHeight</td><td>2 mm</td><td>mm</td><td>M2 bolt for stator coils (k measurement)</td></tr>
+ <tr><td>statorCoilBolt_shaftLength</td><td>coilThickness + wallgap + gap + statorCoilHexNut_height + 4</td><td>mm</td><td>M2 bolt for stator coils (l measurement)</td></tr>
+ <tr><td>statorCoilHexNut_sideToSide</td><td>4 mm</td><td>mm</td><td>M2 nut for bolt for stator coils (s measurement)</td></tr>
+ <tr><td>statorCoilHexNut_height</td><td>1.2 mm</td><td>mm</td><td>M2 nut for bolt for stator coils (m1 measurement)</td></tr>
+ <tr><td>circuitBoard_height</td><td>1.6 mm</td><td>mm</td><td>For a PCB; not a protoboard which would have extra height from wires, solders, etc.</td></tr>
+ <tr><td>hallEffectSensor_height</td><td>1.1 mm</td><td>mm</td><td>6 pin surface mount Infineon TLE493 Hall Effect sensor</td></tr>
+ <tr><td>hallEffectSensor_length</td><td>3 mm</td><td>mm</td><td>length is the measurement of the sides that have the pins</td></tr>
+ <tr><td>hallEffectSensor_width</td><td>1.6 mm</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>hallEffectSensor_pinLength</td><td>0.6 mm</td><td>mm</td><td>how far out from the body the pins stick out</td></tr>
+ <tr><td>circuitboardMountBolt_diameter</td><td>2 mm</td><td>mm</td><td>M2 bolt for stator circuitboard (D measurement)</td></tr>
+ <tr><td>circuitboardMountBolt_headDiameter</td><td>3.98 mm</td><td>mm</td><td>M2 bolt for stator circuitboard (dk measurement)</td></tr>
+ <tr><td>circuitboardMountBolt_headHeight</td><td>2 mm</td><td>mm</td><td>M2 bolt for stator circuitboard (k measurement)</td></tr>
+ <tr><td>circuitboardMountBolt_shaftLength</td><td>coilThickness</td><td>mm</td><td>M2 bolt for stator circuitboard (l measurement)</td></tr>
+ <tr><td>circuitboardMountHexNut_sideToSide</td><td>4 mm</td><td>mm</td><td>M2 nut for bolt for circuitboard (s measurement)</td></tr>
+ <tr><td>circuitboardMountHexNut_height</td><td>1.2 mm</td><td>mm</td><td>M2 nut for bolt for circuitboard (m1 measurement)</td></tr>
+ <tr><td>statorShellBolt_diameter</td><td>3 mm</td><td>mm</td><td>M3 bolt for holding stator halves together (D measurement)</td></tr>
+ <tr><td>statorShellBolt_headDiameter</td><td>5.68 mm</td><td>mm</td><td>M3 bolt for holding stator halves together (dk measurement)</td></tr>
+ <tr><td>statorShellBolt_headHeight</td><td>3 mm</td><td>mm</td><td>M3 bolt for holding stator halves together (k measurement)</td></tr>
+ <tr><td>statorShellBolt_countersinkDepth</td><td>statorShellBolt_headHeight + airgap + (statorThickness % 4)</td><td>mm</td><td>&nbsp;</td></tr>
+ <tr><td>statorShellBolt_shaftLength</td><td>statorThickness - statorShellBolt_countersinkDepth</td><td>mm</td><td>M3 bolt for holding stator halves together (l measurement)</td></tr>
+ <tr><td>statorShellHexNut_sideToSide</td><td>5.3 mm</td><td>mm</td><td>M3 nut for bolt for holding stator halves together (s measurement)</td></tr>
+ <tr><td>statorShellHexNut_height</td><td>2.3 mm</td><td>mm</td><td>M3 nut for bolt for holding stator halves together (m1 measurement)</td></tr>
+</tbody></table>
