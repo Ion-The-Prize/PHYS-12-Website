@@ -2,22 +2,46 @@
 
 /* Making content fragment wider */
 container py-5 overlay .container-xl, .container-lg, .container-md, .container-sm, .container {
-  max-width: 1400px;
+	max-width: 1400px;
 }
 
+/* Properly formatting blockquotes */
 blockquote {
 	padding: 0 1em;
 	font-size: 1rem !important;
-	color:grey;
+	color: grey;
 	border-left: .25em solid grey;
 }
 
-#leftTitle, #lightTitle {
-	text-align: left;
+
+/* Properly formatting asides (does not work atm) */
+aside {
+    width: 34%;
+    padding-left: 1rem;
+    margin-left: 2rem;
+    float: right !important;
+	box-shadow: inset .4rem 0 0.34rem -0.34rem #f5007e;  /* info color */
+    color: #f5007e;  /* info color */
 }
 
+aside > p {
+    margin: 0.5rem;
+}
+
+/* Captioned videos in tables should be relative 
+table > thead > tr > th > .video-shortcode {
+
+}
+*/
+
+/* Subtitle formatting for blogs */
 #lightTitle {
 	font-weight: 350;
+}
+
+/* Frontmatter blog title formatting was being weird (due to a typo on my end) */
+#leftTitle, #lightTitle {
+	text-align: left;
 }
 
 .inline-svg {
@@ -29,16 +53,16 @@ blockquote {
 }
 
 table {
-margin: 1rem;
+	margin: 1rem;
 }
 
 /* tags have ugly padding at start of blog posts */
 .content-info {
-padding-left: 0px !important;
+	padding-left: 0px !important;
 }
 
 .content-sidebar {
-padding-left: 15px !important;
+	padding-left: 15px !important;
 }
 
 .col-md-9 {
